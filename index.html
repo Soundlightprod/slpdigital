@@ -261,7 +261,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="SLP Digital, accueil"><img src="/logo.png?v=6" alt="SLP Digital" width="76" height="46"></a>
     <nav aria-label="Navigation principale">
-      <a href="#formules">Formules</a>
+      <a href="#formules">Offres</a>
       <a href="#exemples">Exemples à tester</a>
       <a href="#methode">Méthode</a>
       <a href="#questions">Questions</a>
@@ -351,8 +351,8 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
 <section class="s s-clair" id="formules">
   <div class="wrap">
     <div class="s-head">
-      <h2>Quatre formules, un prix mensuel fixe</h2>
-      <p>Choisissez le niveau qui correspond à votre activité. Vous pouvez changer de formule quand votre besoin évolue.</p>
+      <h2>Quatre offres, un prix mensuel fixe</h2>
+      <p>Choisissez le niveau qui correspond à votre activité. Vous pouvez changer d’offre quand votre besoin évolue.</p>
     </div>
     <div class="plans">
       <article class="plan">
@@ -386,7 +386,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Intégration de vos réseaux sociaux</li>
         </ul>
         <div class="acts">
-          <a class="btn btn-go" href="#contact" data-formule="Agenda et réservations">Choisir cette formule</a>
+          <a class="btn btn-go" href="#contact" data-formule="Agenda et réservations">Choisir cette offre</a>
           <a class="btn btn-line" href="#exemples" data-demo="agenda">Tester l’exemple</a>
         </div>
       </article>
@@ -517,9 +517,9 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
         <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160" aria-describedby="e-email"><div class="err" id="e-email" role="alert"></div></div>
         <div class="field"><label for="telephone">Téléphone</label><input id="telephone" name="telephone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="40" aria-describedby="e-telephone"><div class="err" id="e-telephone" role="alert"></div></div>
       </div>
-      <div class="field"><label for="sujet">Formule qui vous intéresse</label>
+      <div class="field"><label for="sujet">Offre qui vous intéresse</label>
         <select id="sujet" name="sujet" required aria-describedby="e-sujet">
-          <option value="">Choisir une formule</option>
+          <option value="">Choisir une offre</option>
           <option>Vitrine</option>
           <option>Agenda et réservations</option>
           <option>Espace privé</option>
@@ -637,7 +637,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     if (!f.nom.value.trim()) bad('nom', 'Indiquez votre nom.');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(f.email.value.trim())) bad('email', 'Indiquez une adresse email valide.');
     if (f.telephone.value.replace(/\D/g,'').length < 6) bad('telephone', 'Indiquez un numéro de téléphone.');
-    if (!f.sujet.value) bad('sujet', 'Choisissez une formule, ou « Je ne sais pas encore ».');
+    if (!f.sujet.value) bad('sujet', 'Choisissez une offre, ou « Je ne sais pas encore ».');
     if (f.message.value.trim().length < 10) bad('message', 'Décrivez votre projet en quelques mots.');
     if (first) first.focus();
     return ok;
