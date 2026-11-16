@@ -23,6 +23,7 @@ a{color:inherit}
 header{position:sticky;top:0;z-index:10;background:rgba(11,13,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:.2px}
+.logo img{display:block;height:46px;width:auto}
 .logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
 nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:.95rem}
 nav a:hover{color:var(--text)}
@@ -75,7 +76,7 @@ footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#">SLP <span>Digital</span></a>
+    <a class="logo" href="#" aria-label="SLP Digital"><img src="/logo.png" alt="SLP Digital" width="76" height="46"></a>
     <nav>
       <a class="hide" href="#offres">Offres</a>
       <a class="hide" href="#methode">Méthode</a>
