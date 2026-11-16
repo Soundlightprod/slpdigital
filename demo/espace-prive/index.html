@@ -15,7 +15,7 @@ body{font-family:var(--sans);background:var(--fond);color:var(--encre);line-heig
 .hide{display:none!important}
 /* connexion */
 .login{min-height:calc(100vh - 38px);display:grid;grid-template-columns:1fr 1fr}
-.login .vis{background:linear-gradient(150deg,var(--marine),var(--marine2));color:#fff;padding:60px 48px;display:flex;flex-direction:column;justify-content:space-between}
+.login .vis{background:linear-gradient(160deg,rgba(22,41,74,.93),rgba(33,56,107,.82)),url(https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?auto=format&fit=crop&w=1400&q=72) center/cover;color:#fff;padding:60px 48px;display:flex;flex-direction:column;justify-content:space-between}
 .logo{font:800 1.35rem var(--sans);letter-spacing:-.01em}.logo i{font-style:normal;color:var(--menthe)}
 .vis h1{font:800 clamp(1.8rem,3.4vw,2.6rem)/1.1 var(--sans);letter-spacing:-.02em;max-width:12em}
 .vis p{opacity:.8;margin-top:14px;max-width:26em}
@@ -55,7 +55,7 @@ main.mn{padding:30px 34px 60px;max-width:980px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
 .kpi{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:18px}
 .kpi b{display:block;font:800 1.9rem var(--sans);color:var(--marine)}.kpi span{color:var(--doux);font-size:.9rem}
-.panel{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:6px 0;margin-bottom:22px}
+.banner{height:150px;border-radius:14px;margin-bottom:22px;background:linear-gradient(90deg,rgba(22,41,74,.85),rgba(22,41,74,.15)),url(https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=1200&q=72) center/cover;display:flex;align-items:flex-end;padding:18px 22px;color:#fff;font-weight:700}.panel{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:6px 0;margin-bottom:22px}
 .panel h2{font:800 1.02rem var(--sans);padding:16px 20px 8px}
 .item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 20px;border-top:1px solid var(--ligne)}
 .item:first-of-type{border-top:0}
@@ -165,7 +165,7 @@ th{color:var(--doux);font-size:.8rem;font-weight:700;border-top:0}
     var head=function(t,s){return '<h1>'+t+'<span class="role">'+me.role+'</span></h1><p class="lead">'+s+'</p>'};
     if(view==='accueil'){
       var nd=DOCS.filter(function(d){return me.lvl>=d.min}).length,ne=AG.filter(function(a){return me.lvl>=a.min}).length;
-      h=head('Bonjour '+me.nom.split(' ')[0],'Voici ce qui vous concerne cette semaine.')+
+      h=head('Bonjour '+me.nom.split(' ')[0],'Voici ce qui vous concerne cette semaine.')+'<div class="banner">Cabinet Veyrac &amp; Associés · '+me.role+'</div>'+
       '<div class="grid"><div class="kpi"><b>'+ne+'</b><span>événements à l’agenda</span></div><div class="kpi"><b>'+nd+'</b><span>documents accessibles</span></div><div class="kpi"><b>'+(me.lvl===3?'4':'—')+'</b><span>'+(me.lvl===3?'collaborateurs gérés':'réservé à la direction')+'</span></div></div>'+
       '<div class="panel"><h2>Prochains événements</h2>'+AG.filter(function(a){return me.lvl>=a.min}).slice(0,4).map(function(a){return '<div class="item"><div><b>'+a.n+'</b><small>'+a.j+' · '+a.h+'</small></div>'+(a.c==='r'?'<span class="tag rh">Direction</span>':'')+'</div>'}).join('')+'</div>'+
       '<div class="panel"><h2>Annonce de l’équipe</h2><div class="item"><div><b>Fermeture du cabinet le 24 décembre après-midi</b><small>Merci de planifier vos rendez-vous clients en conséquence.</small></div></div></div>';
