@@ -417,24 +417,25 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
   <div class="wrap">
     <div class="s-head">
       <h2>Testez-les en grandeur nature</h2>
-      <p>Trois exemples complets, avec de vraies fonctions : une vitrine, un agenda de réservation qui fonctionne, un espace privé avec ses niveaux de droits. Les entreprises présentées sont fictives.</p>
+      <p>Parcourez nos propres sites, créés et hébergés selon le même principe, et un exemple d’espace privé avec ses niveaux de droits. Vous pouvez tout tester : rien n’est simulé.</p>
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Exemples de sites">
       <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine</button>
       <button role="tab" id="t-agenda" aria-selected="false" aria-controls="demoFrame" data-demo="agenda">Agenda &amp; réservations</button>
+      <button role="tab" id="t-boutique" aria-selected="false" aria-controls="demoFrame" data-demo="boutique">Boutique en ligne</button>
       <button role="tab" id="t-espace-prive" aria-selected="false" aria-controls="demoFrame" data-demo="espace-prive">Espace privé</button>
     </div>
     <div class="demo-stage" id="demoStage">
       <div class="demo-frame" id="demoFrame" role="tabpanel" aria-labelledby="t-vitrine">
-        <div class="bar"><i></i><i></i><i></i><b id="demoUrl">atelier-boissiere.fr</b></div>
-        <iframe id="demoIframe" title="Exemple de site de démonstration" loading="lazy" src="about:blank"></iframe>
+        <div class="bar"><i></i><i></i><i></i><b id="demoUrl">soundlightprod.fr</b></div>
+        <iframe id="demoIframe" title="Exemple de site" loading="lazy" src="about:blank"></iframe>
       </div>
     </div>
     <div class="demo-meta">
-      <p id="demoText">Un site de présentation pour un artisan : services, réalisations et demande de devis.</p>
+      <p id="demoText">Notre propre site : présentation, catalogue de spectacles et formulaire de devis.</p>
       <div class="tools">
         <div class="seg" role="group" aria-label="Taille de l’aperçu"><button type="button" id="vDesk" aria-pressed="true">Ordinateur</button><button type="button" id="vMob" aria-pressed="false">Mobile</button></div>
-        <a class="btn btn-ghost" id="demoOpen" href="/demo/vitrine/">Ouvrir cet exemple en plein écran</a>
+        <a class="btn btn-ghost" id="demoOpen" href="https://soundlightprod.fr/" target="_blank" rel="noopener">Ouvrir cet exemple en plein écran</a>
         <a class="btn btn-go" id="demoWant" href="#contact" data-formule="Vitrine">Je veux le même</a>
       </div>
     </div>
@@ -561,24 +562,25 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
 
   /* Exemples */
   var DEMOS = {
-    'vitrine': { url: 'atelier-boissiere.fr', formule: 'Vitrine', text: 'Un site de présentation pour un artisan : services, réalisations et demande de devis.' },
-    'agenda': { url: 'studio-orea.fr', formule: 'Agenda et réservations', text: 'Un salon de coiffure : le client choisit sa prestation, son jour et son créneau, puis reçoit sa confirmation. Essayez une réservation.' },
-    'espace-prive': { url: 'espace.veyrac-associes.fr', formule: 'Espace privé', text: 'Un espace réservé à une équipe : trois profils, trois niveaux d’accès. Connectez-vous avec chacun pour voir la différence.' }
+    'vitrine': { url: 'soundlightprod.fr', href: 'https://soundlightprod.fr/?notrack=1', open: 'https://soundlightprod.fr/', ext: true, formule: 'Vitrine', text: 'Notre propre site : présentation de l’activité, catalogue de spectacles et formulaire de devis.' },
+    'agenda': { url: 'soundlightprod.fr/agenda', href: 'https://soundlightprod.fr/agenda?notrack=1', open: 'https://soundlightprod.fr/agenda', ext: true, formule: 'Agenda et réservations', text: 'L’agenda public de nos prestations, alimenté en direct depuis notre espace de gestion.' },
+    'boutique': { url: 'slpstore.fr', href: 'https://slpstore.fr/?notrack=1', open: 'https://slpstore.fr/', ext: true, formule: 'Je ne sais pas encore', text: 'Notre boutique en ligne avec paiement sécurisé : une option possible sur devis.' },
+    'espace-prive': { url: 'espace.veyrac-associes.fr', href: '/demo/espace-prive/', open: '/demo/espace-prive/', ext: false, formule: 'Espace privé', text: 'Un espace réservé à une équipe (exemple fictif) : trois profils, trois niveaux d’accès. Connectez-vous avec chacun pour voir la différence.' }
   };
   var frame = document.getElementById('demoFrame'), ifr = document.getElementById('demoIframe');
   var tabs = [].slice.call(document.querySelectorAll('.demo-tabs button'));
   function showDemo(k, scroll){
     var d = DEMOS[k]; if (!d) return;
     tabs.forEach(function(b){ b.setAttribute('aria-selected', b.dataset.demo === k ? 'true' : 'false'); });
-    if (matchMedia('(min-width:701px)').matches) ifr.src = '/demo/' + k + '/';
+    if (matchMedia('(min-width:701px)').matches) ifr.src = d.href;
     document.getElementById('demoUrl').textContent = d.url;
     document.getElementById('demoText').textContent = d.text;
-    document.getElementById('demoOpen').href = '/demo/' + k + '/';
+    var o = document.getElementById('demoOpen'); o.href = d.open; if (d.ext) { o.target = '_blank'; o.rel = 'noopener'; } else { o.removeAttribute('target'); }
     var w = document.getElementById('demoWant'); w.dataset.formule = d.formule;
     if (scroll) document.getElementById('exemples').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
   }
   tabs.forEach(function(b){ b.addEventListener('click', function(){ showDemo(b.dataset.demo); }); });
-  document.querySelectorAll('.plan [data-demo]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); if (matchMedia('(max-width:700px)').matches) { location.href = '/demo/' + a.dataset.demo + '/'; return; } showDemo(a.dataset.demo, true); }); });
+  document.querySelectorAll('.plan [data-demo]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); if (matchMedia('(max-width:700px)').matches) { var dd = DEMOS[a.dataset.demo]; if (dd.ext) window.open(dd.open, '_blank', 'noopener'); else location.href = dd.open; return; } showDemo(a.dataset.demo, true); }); });
   var loaded = false;
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function(es, o){ if (es[0].isIntersecting && !loaded) { loaded = true; showDemo('vitrine'); o.disconnect(); } }, {rootMargin: '400px'}).observe(document.getElementById('demoStage'));
