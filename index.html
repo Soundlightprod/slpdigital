@@ -193,7 +193,7 @@ section.s{padding:104px 0}
 .seg{display:inline-flex;border:1px solid var(--ligne);border-radius:12px;overflow:hidden}
 .seg button{font:700 .92rem var(--corps);background:transparent;color:var(--doux);border:0;padding:0 18px;min-height:46px;cursor:pointer}
 .seg button[aria-pressed=true]{background:var(--scene2);color:#fff}
-@media(max-width:700px){.demo-frame iframe{height:560px}.demo-frame.mobile{width:100%}.seg{display:none}}
+@media(max-width:700px){.demo-stage{display:none}.seg{display:none}.demo-meta{margin-top:8px;display:grid}.demo-meta .tools{display:grid;gap:12px}.demo-meta .tools .btn{width:100%;min-height:54px}#demoOpen{order:-1;background:var(--cta);color:#fff;border-color:var(--cta)}}
 
 /* Méthode */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s;list-style:none}
@@ -434,7 +434,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       <p id="demoText">Un site de présentation pour un artisan : services, réalisations et demande de devis.</p>
       <div class="tools">
         <div class="seg" role="group" aria-label="Taille de l’aperçu"><button type="button" id="vDesk" aria-pressed="true">Ordinateur</button><button type="button" id="vMob" aria-pressed="false">Mobile</button></div>
-        <a class="btn btn-ghost" id="demoOpen" href="/demo/vitrine/" target="_blank" rel="noopener">Ouvrir en plein écran</a>
+        <a class="btn btn-ghost" id="demoOpen" href="/demo/vitrine/">Ouvrir cet exemple en plein écran</a>
         <a class="btn btn-go" id="demoWant" href="#contact" data-formule="Vitrine">Je veux le même</a>
       </div>
     </div>
@@ -570,7 +570,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
   function showDemo(k, scroll){
     var d = DEMOS[k]; if (!d) return;
     tabs.forEach(function(b){ b.setAttribute('aria-selected', b.dataset.demo === k ? 'true' : 'false'); });
-    ifr.src = '/demo/' + k + '/';
+    if (matchMedia('(min-width:701px)').matches) ifr.src = '/demo/' + k + '/';
     document.getElementById('demoUrl').textContent = d.url;
     document.getElementById('demoText').textContent = d.text;
     document.getElementById('demoOpen').href = '/demo/' + k + '/';
@@ -578,7 +578,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     if (scroll) document.getElementById('exemples').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
   }
   tabs.forEach(function(b){ b.addEventListener('click', function(){ showDemo(b.dataset.demo); }); });
-  document.querySelectorAll('.plan [data-demo]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); showDemo(a.dataset.demo, true); }); });
+  document.querySelectorAll('.plan [data-demo]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); if (matchMedia('(max-width:700px)').matches) { location.href = '/demo/' + a.dataset.demo + '/'; return; } showDemo(a.dataset.demo, true); }); });
   var loaded = false;
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function(es, o){ if (es[0].isIntersecting && !loaded) { loaded = true; showDemo('vitrine'); o.disconnect(); } }, {rootMargin: '400px'}).observe(document.getElementById('demoStage'));
