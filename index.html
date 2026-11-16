@@ -25,7 +25,7 @@
   --nuit:#0A0820; --scene:#15113A; --scene2:#1F1A55; --ligne:#3A327F;
   --papier:#F4F3FC; --blanc:#fff; --encre:#0A0820;
   --texte:#F2F1FC; --doux:#B1ABDD; --doux-clair:#59538F;
-  --bleu:#5B4BFF; --magenta:#A855F7; --ambre:#22D3EE; --violet:#7C5CFF; --cyan:#67E8F9;
+  --bleu:#5B52D9; --magenta:#B07CF0; --ambre:#A99CF0; --violet:#7C6CE8; --cyan:#9CC9E8; --cta:#6657E0;
   --titre:"Bricolage","Segoe UI",system-ui,sans-serif; --corps:"Figtree","Segoe UI",system-ui,sans-serif;
   --r:14px;
 }
@@ -38,13 +38,13 @@ h1,h2,h3{font-family:var(--titre);line-height:1.08;letter-spacing:-.02em;font-we
 :focus-visible{outline:3px solid var(--ambre);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 .sr{position:absolute;left:-9999px}
-.skip{position:absolute;left:12px;top:-60px;background:var(--ambre);color:var(--encre);padding:10px 16px;border-radius:8px;font-weight:700;z-index:100;text-decoration:none}
+.skip{position:absolute;left:12px;top:-60px;background:var(--cta);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;z-index:100;text-decoration:none}
 .skip:focus{top:12px}
 
 /* Boutons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:12px;font:700 1.02rem var(--corps);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
-.btn-go{background:var(--ambre);color:var(--encre);box-shadow:0 10px 30px -8px rgba(34,211,238,.55)}
-.btn-go:hover{transform:translateY(-2px);box-shadow:0 16px 36px -8px rgba(34,211,238,.7)}
+.btn-go{background:var(--cta);color:#fff;box-shadow:0 10px 30px -8px rgba(102,87,224,.6)}
+.btn-go:hover{background:#7466EA;transform:translateY(-2px);box-shadow:0 16px 36px -8px rgba(102,87,224,.75)}
 .btn-ghost{border-color:var(--ligne);color:var(--texte);background:rgba(255,255,255,.03)}
 .btn-ghost:hover{border-color:var(--doux);background:rgba(255,255,255,.07)}
 .btn-dark{background:var(--encre);color:#fff}
@@ -80,10 +80,10 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 .stage{position:relative;height:560px;perspective:1700px;perspective-origin:50% 40%}
 .rig{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(var(--rx,5)*1deg)) rotateY(calc(var(--ry,-14)*1deg));will-change:transform}
 .floor{position:absolute;left:-10%;right:-10%;bottom:40px;height:420px;transform:rotateX(78deg) translateZ(-60px);transform-origin:50% 100%;background-image:linear-gradient(rgba(124,92,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,255,.35) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(closest-side,#000 30%,transparent 100%);mask-image:radial-gradient(closest-side,#000 30%,transparent 100%);opacity:.7}
-.beam{position:absolute;top:-70px;width:300px;height:620px;transform-origin:50% 0;background:linear-gradient(to bottom,var(--c) 0%,transparent 88%);clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);filter:blur(16px);mix-blend-mode:screen;opacity:.5;animation:sweep 9s ease-in-out infinite alternate}
+.beam{position:absolute;top:-70px;width:300px;height:620px;transform-origin:50% 0;background:linear-gradient(to bottom,var(--c) 0%,transparent 88%);clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);filter:blur(18px);mix-blend-mode:screen;opacity:.32;animation:sweep 9s ease-in-out infinite alternate}
 .beam.b1{--c:var(--bleu);left:6%;transform:rotate(14deg);animation-delay:-2s}
-.beam.b2{--c:var(--magenta);left:38%;transform:rotate(-4deg);animation-delay:-5s;opacity:.42}
-.beam.b3{--c:var(--ambre);right:2%;transform:rotate(-16deg);animation-delay:-8s;opacity:.38}
+.beam.b2{--c:var(--magenta);left:38%;transform:rotate(-4deg);animation-delay:-5s;opacity:.28}
+.beam.b3{--c:var(--ambre);right:2%;transform:rotate(-16deg);animation-delay:-8s;opacity:.26}
 @keyframes sweep{from{rotate:-5deg}to{rotate:6deg}}
 .win{position:absolute;background:#fff;color:var(--encre);border-radius:14px;box-shadow:0 40px 80px -20px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.08);overflow:hidden;font-size:11px;animation:assemble 1.3s cubic-bezier(.2,.8,.2,1) both,float 7s ease-in-out infinite alternate}
 .win .bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#E8E7F5;border-bottom:1px solid #D6D4EC}
@@ -154,7 +154,7 @@ section.s{padding:104px 0}
 .plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #DCDAF0;border-radius:22px;padding:34px 30px;transform-style:preserve-3d;transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .2s ease-out,box-shadow .25s;box-shadow:0 20px 50px -30px rgba(14,16,32,.25)}
 .plan:hover{box-shadow:0 36px 70px -28px rgba(14,16,32,.4)}
 .plan.star{background:var(--encre);color:#fff;border-color:var(--encre);box-shadow:0 40px 80px -30px rgba(91,75,255,.6)}
-.plan .tag{position:absolute;top:-14px;left:30px;background:var(--ambre);color:var(--encre);font:800 .8rem var(--corps);padding:6px 14px;border-radius:30px}
+.plan .tag{position:absolute;top:-14px;left:30px;background:var(--cta);color:#fff;font:800 .8rem var(--corps);padding:6px 14px;border-radius:30px}
 .plan h3{font-size:1.65rem}
 .plan .for{margin-top:8px;color:var(--doux-clair);font-size:.98rem;min-height:3.1em}
 .plan.star .for{color:var(--doux)}
@@ -176,7 +176,7 @@ section.s{padding:104px 0}
 .demo-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
 .demo-tabs button{font:700 1rem var(--corps);color:var(--doux);background:rgba(255,255,255,.04);border:1px solid var(--ligne);padding:13px 22px;border-radius:12px;cursor:pointer;transition:.18s}
 .demo-tabs button:hover{color:#fff;border-color:var(--doux)}
-.demo-tabs button[aria-selected=true]{background:var(--ambre);color:var(--encre);border-color:var(--ambre)}
+.demo-tabs button[aria-selected=true]{background:var(--cta);color:#fff;border-color:var(--cta)}
 .demo-stage{perspective:2000px;perspective-origin:50% 0}
 .demo-frame{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 60px 110px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);transform:rotateX(var(--dx,3deg)) rotateY(var(--dy,0deg));transition:transform .25s ease-out,width .4s,max-width .4s;margin:0 auto;max-width:100%}
 .demo-frame.mobile{width:398px}
@@ -233,7 +233,7 @@ form.f{background:var(--scene);border:1px solid var(--ligne);border-radius:22px;
 .field input,.field select,.field textarea{width:100%;font:500 1rem var(--corps);color:#fff;background:var(--nuit);border:1.5px solid var(--ligne);border-radius:11px;padding:14px 15px;transition:border-color .15s,box-shadow .15s}
 .field textarea{min-height:130px;resize:vertical}
 .field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#B1ABDD 50%),linear-gradient(135deg,#B1ABDD 50%,transparent 50%);background-position:calc(100% - 22px) 55%,calc(100% - 16px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ambre);box-shadow:0 0 0 4px rgba(34,211,238,.18)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ambre);box-shadow:0 0 0 4px rgba(169,156,240,.18)}
 .field [aria-invalid=true]{border-color:#FF8BB0}
 .err{color:#FF9DBE;font-size:.88rem;min-height:0;margin-top:5px}
 .hp{position:absolute;left:-9999px;height:0;overflow:hidden}
@@ -258,7 +258,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
 
 <header class="top">
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="SLP Digital, accueil"><img src="/logo.png?v=4" alt="SLP Digital" width="76" height="46"></a>
+    <a class="brand" href="#top" aria-label="SLP Digital, accueil"><img src="/logo.png?v=6" alt="SLP Digital" width="76" height="46"></a>
     <nav aria-label="Navigation principale">
       <a href="#formules">Formules</a>
       <a href="#exemples">Exemples à tester</a>
@@ -519,7 +519,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
 
 <footer>
   <div class="wrap">
-    <div style="display:flex;align-items:center;gap:18px"><img src="/logo.png?v=4" alt="SLP Digital" width="62" height="38"><span>SLP Digital, une marque de SLP Sound Light Prod<br>Sites internet et espaces privés · Dordogne et toute la France</span></div>
+    <div style="display:flex;align-items:center;gap:18px"><img src="/logo.png?v=6" alt="SLP Digital" width="62" height="38"><span>SLP Digital, une marque de SLP Sound Light Prod<br>Sites internet et espaces privés · Dordogne et toute la France</span></div>
     <div><a href="mailto:contact@slpdigital.fr">contact@slpdigital.fr</a> · <a href="/mentions-legales">Mentions légales</a></div>
   </div>
 </footer>
