@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SLP Digital — Votre site internet clé en main, par abonnement</title>
+<meta name="description" content="SLP Digital crée et entretient votre site internet ou votre espace privé pour un abonnement mensuel tout inclus : création, hébergement, mises à jour. Pensé pour les TPE, PME, indépendants et agences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d17; --bg2:#11142a; --card:#161a33; --line:#262b4d;
+  --text:#eef0ff; --muted:#a3a8cf; --accent:#7c5cff; --accent2:#22d3ee;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:10;background:rgba(11,13,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:.2px}
+.logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:.95rem}
+nav a:hover{color:var(--text)}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:1rem}
+.btn-main{background:linear-gradient(90deg,var(--accent),#5a8bff);color:#fff;box-shadow:0 8px 30px rgba(124,92,255,.35)}
+.btn-main:hover{filter:brightness(1.1)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent)}
+.hero{padding:96px 0 72px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(124,92,255,.28),transparent 60%)}
+.eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--accent2);font-size:.85rem;margin-bottom:22px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5.5vw,3.8rem);line-height:1.1;margin-bottom:20px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:640px;margin:0 auto 32px;color:var(--muted);font-size:1.15rem}
+.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:36px;color:var(--muted);font-size:.9rem}
+.badges span{padding:6px 14px;background:var(--bg2);border-radius:999px;border:1px solid var(--line)}
+section{padding:80px 0}
+section.alt{background:var(--bg2)}
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3.6vw,2.4rem);margin-bottom:12px;text-align:center}
+.lead{color:var(--muted);text-align:center;max-width:620px;margin:0 auto 44px}
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.97rem}
+.plan{display:flex;flex-direction:column}
+.plan.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 20px 50px rgba(124,92,255,.2)}
+.tag{align-self:flex-start;font-size:.75rem;font-weight:600;color:#fff;background:var(--accent);padding:3px 10px;border-radius:999px;margin-bottom:12px}
+.price{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;margin:12px 0 4px}
+.price small{font-size:1rem;color:var(--muted);font-weight:400}
+.plan ul{list-style:none;margin:18px 0 24px;flex:1}
+.plan li{padding:6px 0 6px 26px;position:relative;color:var(--muted);font-size:.95rem}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--accent2);font-weight:700}
+.step .n{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:700;margin-bottom:14px;font-family:'Space Grotesk',sans-serif}
+.note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:26px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::after{content:"+";float:right;color:var(--accent2);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:12px;font-size:.97rem}
+.faq{max-width:760px;margin:0 auto}
+.contact{text-align:center}
+.mail{display:inline-block;margin:10px 0 20px;font-size:1.4rem;font-weight:700;font-family:'Space Grotesk',sans-serif;color:var(--accent2);text-decoration:none;border-bottom:2px solid var(--accent2)}
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
+@media(max-width:640px){nav a.hide{display:none}.hero{padding:64px 0 48px}section{padding:56px 0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">SLP <span>Digital</span></a>
+    <nav>
+      <a class="hide" href="#offres">Offres</a>
+      <a class="hide" href="#methode">Méthode</a>
+      <a class="hide" href="#faq">Questions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Sites internet &amp; espaces privés pour TPE, PME et indépendants</span>
+    <h1>Votre site internet,<br><em>clé en main</em>, sans souci technique.</h1>
+    <p>Création, hébergement, mises à jour : tout est inclus dans un abonnement mensuel fixe. Vous vous concentrez sur votre métier et vos clients, on s'occupe de votre présence en ligne.</p>
+    <div class="cta">
+      <a class="btn btn-main" href="#contact">Demander un devis gratuit</a>
+      <a class="btn btn-ghost" href="#offres">Voir les formules</a>
+    </div>
+    <div class="badges">
+      <span>Pas de frais de création</span>
+      <span>Hébergement inclus</span>
+      <span>Mises à jour incluses</span>
+      <span>Interlocuteur unique</span>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="wrap">
+    <h2>Des formules simples</h2>
+    <p class="lead">Un prix mensuel fixe, pas de mauvaise surprise. Création du site et entretien compris.</p>
+    <div class="grid g3">
+      <article class="card plan">
+        <h3>Vitrine</h3>
+        <p>Pour présenter votre activité et être trouvé facilement.</p>
+        <div class="price">59,90&nbsp;€<small> TTC / mois</small></div>
+        <p style="font-size:.85rem">soit 49,92&nbsp;€ HT (TVA 20&nbsp;%)</p>
+        <ul>
+          <li>Site de présentation de quelques pages</li>
+          <li>Adapté mobile, rapide, référencement de base</li>
+          <li>Formulaire de contact</li>
+          <li>Nom de domaine et HTTPS inclus</li>
+          <li>Adresse e-mail professionnelle incluse</li>
+          <li>Hébergement et sauvegardes</li>
+          <li>Mises à jour de contenu chaque mois</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Choisir la vitrine</a>
+      </article>
+      <article class="card plan featured">
+        <span class="tag">Le plus demandé</span>
+        <h3>Agenda &amp; réservations</h3>
+        <p>Pour les entreprises qui prennent des rendez-vous, des réservations ou des demandes de devis.</p>
+        <div class="price">79,90&nbsp;€<small> TTC / mois</small></div>
+        <p style="font-size:.85rem">soit 66,58&nbsp;€ HT (TVA 20&nbsp;%)</p>
+        <ul>
+          <li>Tout ce que contient la Vitrine</li>
+          <li>Agenda en ligne : rendez-vous, événements, disponibilités</li>
+          <li>Demandes de réservation ou de devis</li>
+          <li>Galerie photos et vidéos</li>
+          <li>Intégration de vos réseaux sociaux</li>
+        </ul>
+        <a class="btn btn-main" href="#contact">Choisir cette formule</a>
+      </article>
+      <article class="card plan">
+        <h3>Espace privé</h3>
+        <p>Un intranet pour votre équipe, vos collaborateurs ou vos clients.</p>
+        <div class="price">Sur devis</div>
+        <ul>
+          <li>Accès protégé par identifiant</li>
+          <li>Niveaux de droits selon les profils</li>
+          <li>Agenda interne, documents, informations</li>
+          <li>Pensé pour la confidentialité des données</li>
+          <li>Évolutif selon vos besoins</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Demander un devis</a>
+      </article>
+    </div>
+    <p class="note">Création d'identité visuelle (logo, charte graphique) et visuels sur mesure en option, sur devis.</p>
+  </div>
+</section>
+
+<section id="inclus" class="alt">
+  <div class="wrap">
+    <h2>Tout est compris</h2>
+    <p class="lead">Un seul interlocuteur, aucune facture surprise.</p>
+    <div class="grid g4">
+      <div class="card"><h3>Création</h3><p>Un site conçu sur mesure pour votre activité, mis en ligne pour vous.</p></div>
+      <div class="card"><h3>Hébergement</h3><p>Hébergement rapide et sécurisé, avec nom de domaine, HTTPS, sauvegardes et adresse e-mail professionnelle.</p></div>
+      <div class="card"><h3>Mises à jour</h3><p>Textes, photos, horaires, événements : envoyez-nous vos changements, on les publie.</p></div>
+      <div class="card"><h3>Dépannage</h3><p>Un problème ou une question ? Vous avez quelqu'un à qui parler, pas un formulaire.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="methode">
+  <div class="wrap">
+    <h2>Comment ça se passe</h2>
+    <p class="lead">De la première discussion à la mise en ligne, en quelques étapes.</p>
+    <div class="grid g4">
+      <div class="card step"><div class="n">1</div><h3>On échange</h3><p>Vous nous parlez de votre activité et de ce que vous attendez de votre site.</p></div>
+      <div class="card step"><div class="n">2</div><h3>On propose</h3><p>Vous recevez un devis clair et une maquette adaptée à votre image.</p></div>
+      <div class="card step"><div class="n">3</div><h3>On construit</h3><p>Nous créons le site, vous validez, nous corrigeons jusqu'à votre satisfaction.</p></div>
+      <div class="card step"><div class="n">4</div><h3>On s'en occupe</h3><p>Le site est en ligne et entretenu chaque mois. Vous gardez la main sur vos contenus.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <p class="lead">Les réponses aux questions que l'on nous pose le plus.</p>
+    <div class="faq">
+      <details>
+        <summary>Y a-t-il des frais de création ?</summary>
+        <p>Non. La création du site est incluse dans l'abonnement mensuel. Seules les prestations optionnelles (identité visuelle, fonctionnalités spécifiques) sont facturées à part, sur devis.</p>
+      </details>
+      <details>
+        <summary>Combien de temps dure l'engagement ?</summary>
+        <p>L'abonnement est prévu pour une durée minimale de 24 mois, ce qui nous permet de financer la création du site sans frais d'entrée. Les conditions précises sont précisées dans le devis.</p>
+      </details>
+      <details>
+        <summary>Combien de modifications puis-je demander ?</summary>
+        <p>Chaque mois, un quota de modifications de contenu est inclus. Pour des besoins plus importants (nouvelles pages, nouvelles fonctionnalités), nous vous proposons un devis.</p>
+      </details>
+      <details>
+        <summary>Mes contenus m'appartiennent-ils ?</summary>
+        <p>Oui. Vos textes, photos et logos restent votre propriété, et votre nom de domaine est enregistré à votre nom. En fin de contrat, nous vous remettons une copie de vos contenus.</p>
+      </details>
+      <details>
+        <summary>Comment est-ce payé ?</summary>
+        <p>Par prélèvement SEPA, par virement permanent ou par carte bancaire, au choix. Vous recevez une facture chaque mois.</p>
+      </details>
+      <details>
+        <summary>Pouvez-vous créer mon logo ?</summary>
+        <p>Oui, avec un graphiste professionnel partenaire. C'est une prestation à part, sur devis, que vous pouvez ajouter à votre abonnement.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Parlons de votre projet</h2>
+    <p class="lead">Décrivez-nous votre activité en quelques lignes : nous vous répondons avec une proposition adaptée.</p>
+    <a class="mail" href="mailto:contact@slpdigital.fr?subject=Demande%20de%20devis%20SLP%20Digital">contact@slpdigital.fr</a><br>
+    <a class="btn btn-main" href="mailto:contact@slpdigital.fr?subject=Demande%20de%20devis%20SLP%20Digital">Écrire un message</a>
+    <p class="note">Réponse sous 48 h ouvrées. Devis gratuit et sans engagement.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>SLP Digital</strong> — une marque de SLP Sound Light Prod<br>
+    Sites internet et espaces privés · Dordogne et toute la France
+  </div>
+</footer>
+
+</body>
+</html>
