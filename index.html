@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SLP Digital — Votre site internet professionnel, par abonnement</title>
-<meta name="description" content="Site internet professionnel créé, hébergé et entretenu pour 59,90 € TTC par mois. Sans frais de création. Exemples à tester : vitrine, agenda et réservations, espace privé.">
+<meta name="description" content="Site internet professionnel créé, hébergé et entretenu pour 59,90 € TTC par mois. Sans frais de création. Aussi disponible en application mobile.">
 <link rel="canonical" href="https://slpdigital.fr/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SLP Digital — Votre site internet professionnel, par abonnement">
@@ -150,6 +150,13 @@ section.s{padding:104px 0}
 @media(max-width:980px){.grid4{grid-template-columns:1fr 1fr}.grid4 article:nth-child(2){border-right:0}.grid4 article:nth-child(-n+2){border-bottom:1px solid var(--ligne)}}
 @media(max-width:560px){.grid4{grid-template-columns:1fr}.grid4 article{border-right:0;border-bottom:1px solid var(--ligne)}.grid4 article:last-child{border-bottom:0}}
 
+.appband{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;margin-top:34px;padding:28px 32px;border:1px solid var(--ligne);border-radius:20px;background:linear-gradient(120deg,rgba(124,108,232,.18),rgba(91,82,217,.06))}
+.appband h3{font-size:1.35rem;margin-bottom:8px}.appband p{color:var(--doux);max-width:46em}
+.phn{width:74px;height:130px;border-radius:16px;background:#0A0820;padding:5px;box-shadow:0 0 0 1.5px #3A327F,0 24px 40px -16px rgba(0,0,0,.6)}
+.ph-s{height:100%;border-radius:12px;background:linear-gradient(160deg,#5B52D9,#A99CF0);display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:12px 8px;align-content:start}
+.ph-s i{height:18px;border-radius:5px;background:rgba(255,255,255,.85)}.ph-s i:nth-child(2){background:rgba(255,255,255,.55)}.ph-s i:nth-child(3){background:rgba(255,255,255,.4)}
+.ph-s b{grid-column:1/-1;height:34px;border-radius:7px;background:rgba(10,8,32,.35);margin-top:6px}
+@media(max-width:620px){.appband{grid-template-columns:1fr;padding:24px}}
 /* Formules */
 .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;perspective:1400px;align-items:stretch}
 .plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #DCDAF0;border-radius:22px;padding:34px 30px;transform-style:preserve-3d;transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .2s ease-out,box-shadow .25s;box-shadow:0 20px 50px -30px rgba(14,16,32,.25)}
@@ -344,6 +351,13 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
         <p>Un problème, une question ? Vous parlez à quelqu’un de l’équipe, pas à un formulaire anonyme.</p>
       </article>
     </div>
+    <div class="appband">
+      <div class="phn" aria-hidden="true"><div class="ph-s"><i></i><i></i><i></i><b></b></div></div>
+      <div>
+        <h3>Votre site devient aussi une application mobile</h3>
+        <p>Sur toutes nos offres, votre site s’installe sur l’écran d’accueil du téléphone, avec votre icône et en plein écran, comme une vraie application. Pas de magasin d’applications, pas de mise à jour à gérer. C’est le même principe que les espaces et applications que nous avons créés pour SLP.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -366,6 +380,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Formulaire de contact</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Nom de domaine, HTTPS et e-mail professionnel</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Hébergement, sauvegardes, mises à jour mensuelles</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
           <a class="btn btn-dark" href="#contact" data-formule="Vitrine">Choisir la Vitrine</a>
@@ -384,6 +399,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Demandes de réservation ou de devis</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Galerie photos et vidéos</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Intégration de vos réseaux sociaux</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
           <a class="btn btn-go" href="#contact" data-formule="Agenda et réservations">Choisir cette offre</a>
@@ -401,6 +417,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Panier et paiement sécurisé par carte bancaire</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Notifications de commande par e-mail</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Hébergement, sauvegardes et mises à jour mensuelles</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
           <a class="btn btn-dark" href="#contact" data-formule="Boutique en ligne">Demander un devis</a>
@@ -418,6 +435,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Agenda interne, documents, informations</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Pensé pour la confidentialité des données</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Évolutif selon vos besoins</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
           <a class="btn btn-dark" href="#contact" data-formule="Espace privé">Demander un devis</a>
@@ -487,6 +505,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       <details><summary>Combien de modifications puis-je demander ?</summary><p>Chaque mois, un quota de modifications de contenu est inclus. Pour des besoins plus importants (nouvelles pages, nouvelles fonctionnalités), nous vous proposons un devis.</p></details>
       <details><summary>Mes contenus m’appartiennent-ils ?</summary><p>Oui. Vos textes, photos et logos restent votre propriété, et votre nom de domaine est enregistré à votre nom. En fin de contrat, nous vous remettons une copie de vos contenus.</p></details>
       <details><summary>Comment est-ce payé ?</summary><p>Par prélèvement SEPA, par virement permanent ou par carte bancaire, au choix. Vous recevez une facture chaque mois.</p></details>
+      <details><summary>Puis-je avoir une application mobile ?</summary><p>Oui, elle est comprise dans toutes les offres. Votre site s’installe depuis le navigateur sur l’écran d’accueil du téléphone, avec votre icône, sans passer par un magasin d’applications.</p></details>
       <details><summary>Pouvez-vous créer mon logo ?</summary><p>Oui, avec un graphiste professionnel partenaire. C’est une prestation à part, sur devis, que vous pouvez ajouter à votre abonnement.</p></details>
     </div>
   </div>
