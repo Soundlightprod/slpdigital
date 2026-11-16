@@ -387,7 +387,6 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
         </ul>
         <div class="acts">
           <a class="btn btn-go" href="#contact" data-formule="Agenda et réservations">Choisir cette formule</a>
-          <a class="btn btn-line" href="#exemples" data-demo="agenda">Tester l’exemple</a>
         </div>
       </article>
       <article class="plan">
@@ -421,7 +420,6 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Exemples de sites">
       <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine</button>
-      <button role="tab" id="t-agenda" aria-selected="false" aria-controls="demoFrame" data-demo="agenda">Agenda &amp; réservations</button>
       <button role="tab" id="t-boutique" aria-selected="false" aria-controls="demoFrame" data-demo="boutique">Boutique en ligne</button>
       <button role="tab" id="t-espace-prive" aria-selected="false" aria-controls="demoFrame" data-demo="espace-prive">Espace privé</button>
     </div>
@@ -563,8 +561,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
   /* Exemples */
   var DEMOS = {
     'vitrine': { url: 'soundlightprod.fr', href: 'https://soundlightprod.fr/?notrack=1', open: 'https://soundlightprod.fr/', ext: true, formule: 'Vitrine', text: 'Notre propre site : présentation de l’activité, catalogue de spectacles et formulaire de devis.' },
-    'agenda': { url: 'soundlightprod.fr/agenda', href: 'https://soundlightprod.fr/agenda?notrack=1', open: 'https://soundlightprod.fr/agenda', ext: true, formule: 'Agenda et réservations', text: 'L’agenda public de nos prestations, alimenté en direct depuis notre espace de gestion.' },
-    'boutique': { url: 'slpstore.fr', href: 'https://slpstore.fr/?notrack=1', open: 'https://slpstore.fr/', ext: true, formule: 'Je ne sais pas encore', text: 'Notre boutique en ligne avec paiement sécurisé : une option possible sur devis.' },
+    'boutique': { url: 'slpstore.fr', href: 'https://slpstore.fr/?notrack=1', open: 'https://slpstore.fr/', ext: true, formule: 'Je ne sais pas encore', text: 'SLP Store, notre boutique en ligne : catalogue, panier et paiement sécurisé. Une option possible sur devis.' },
     'espace-prive': { url: 'espace.veyrac-associes.fr', href: '/demo/espace-prive/', open: '/demo/espace-prive/', ext: false, formule: 'Espace privé', text: 'Un espace réservé à une équipe (exemple fictif) : trois profils, trois niveaux d’accès. Connectez-vous avec chacun pour voir la différence.' }
   };
   var frame = document.getElementById('demoFrame'), ifr = document.getElementById('demoIframe');
