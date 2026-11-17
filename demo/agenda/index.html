@@ -248,7 +248,7 @@ footer.ft{background:var(--prune);color:#E8D5EE;padding:50px 0 34px}
     if(!$('rg').checked)ok=false;
     if(!ok){$('s4').scrollIntoView({behavior:'smooth',block:'center'});$('confirm').textContent='Complétez vos coordonnées';setTimeout(function(){$('confirm').textContent='Confirmer ma réservation'},2200);return}
     var nom=$('nm').value.trim().split(' ')[0],h=hh(st.slot),ref='OR-'+Math.floor(100000+Math.random()*899999);
-    var ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Studio Orea//Demo//FR\r\nBEGIN:VEVENT\r\nUID:'+Date.now()+'@studio-orea-demo\r\nDTSTAMP:'+icsD(new Date(),0)+'\r\nDTSTART:'+icsD(st.day,st.slot)+'\r\nDTEND:'+icsD(st.day,st.slot,st.s.d)+'\r\nSUMMARY:'+st.s.n+' - Studio Oréa\r\nLOCATION:8 rue Neuve d\'Argenson\\, 24100 Bergerac\r\nEND:VEVENT\r\nEND:VCALENDAR';
+    var ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Studio Orea//Demo//FR\r\nBEGIN:VEVENT\r\nUID:'+Date.now()+'@studio-orea-demo\r\nDTSTAMP:'+icsD(new Date(),0)+'\r\nDTSTART:'+icsD(st.day,st.slot)+'\r\nDTEND:'+icsD(st.day,st.slot,st.s.d)+'\r\nSUMMARY:'+st.s.n+' - Studio Oréa\r\nLOCATION:8 rue Saint-Martin\\, 14400 Bayeux\r\nEND:VEVENT\r\nEND:VCALENDAR';
     var url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
     var who=st.p.id==='any'?'l’équipe':st.p.n;
     $('reserver').querySelector('.bk').innerHTML='<div class="card" style="grid-column:1/-1"><div class="conf"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><h3>C’est confirmé, '+nom+' !</h3><p>Votre rendez-vous est réservé. Référence '+ref+'.</p>'+
