@@ -157,6 +157,22 @@ section.s{padding:104px 0}
 .ph-s i{height:18px;border-radius:5px;background:rgba(255,255,255,.85)}.ph-s i:nth-child(2){background:rgba(255,255,255,.55)}.ph-s i:nth-child(3){background:rgba(255,255,255,.4)}
 .ph-s b{grid-column:1/-1;height:34px;border-radius:7px;background:rgba(10,8,32,.35);margin-top:6px}
 @media(max-width:620px){.appband{grid-template-columns:1fr;padding:24px}}
+
+/* Mode de règlement */
+.paybar{display:flex;flex-direction:column;align-items:center;gap:12px;margin:-22px 0 44px}
+.pay{display:inline-flex;gap:4px;padding:5px;background:#fff;border:1px solid #DCDAF0;border-radius:40px;box-shadow:0 14px 34px -22px rgba(14,16,32,.35)}
+.pay button{font:700 .96rem var(--corps);color:var(--encre);background:transparent;border:0;border-radius:34px;padding:11px 22px;cursor:pointer;min-height:44px;transition:background .15s,color .15s}
+.pay button[aria-pressed="true"]{background:var(--cta);color:#fff}
+.pay button:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.pay button i{font-style:normal;font-weight:600;opacity:.85;font-size:.86rem}
+.paybar p{color:var(--doux-clair);font-size:.95rem;text-align:center;max-width:44em}
+.plan .eq{font-size:.9rem;color:var(--doux-clair);margin-top:2px}.plan.star .eq{color:var(--doux)}
+@media(max-width:560px){.pay{flex-direction:column;border-radius:22px;width:100%}.pay button{width:100%}}
+.recap{display:none;background:var(--nuit);border:1px solid var(--ligne);border-radius:12px;padding:14px 16px;font-size:.95rem;color:var(--doux)}
+.recap.show{display:block}.recap b{color:#fff}
+.field.chk label{display:flex;gap:11px;align-items:flex-start;font-weight:500;font-size:.93rem;color:var(--doux)}
+.field.chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--cta)}
+.field[hidden]{display:none}
 /* Formules */
 .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;perspective:1400px;align-items:stretch}
 .plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #DCDAF0;border-radius:22px;padding:34px 30px;transform-style:preserve-3d;transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .2s ease-out,box-shadow .25s;box-shadow:0 20px 50px -30px rgba(14,16,32,.25)}
@@ -368,12 +384,21 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       <h2>Quatre offres, un prix mensuel fixe</h2>
       <p>Choisissez le niveau qui correspond à votre activité. Vous pouvez changer d’offre quand votre besoin évolue.</p>
     </div>
+    <div class="paybar">
+      <div class="pay" role="group" aria-label="Mode de règlement">
+        <button type="button" data-pay="24" aria-pressed="true">24 mois</button>
+        <button type="button" data-pay="12" aria-pressed="false">12 mois</button>
+        <button type="button" data-pay="cash" aria-pressed="false">Comptant <i>2 mois offerts</i></button>
+      </div>
+      <p id="payNote"></p>
+    </div>
     <div class="plans">
       <article class="plan">
         <h3>Vitrine</h3>
         <p class="for">Pour présenter votre activité et être trouvé facilement.</p>
-        <div class="price">59,90&nbsp;€ <small>TTC / mois</small></div>
-        <div class="ht">soit 49,92&nbsp;€ HT (TVA 20&nbsp;%)</div>
+        <div class="price" data-base="5990"><span class="pv"></span> <small class="pu"></small></div>
+        <div class="ht"></div>
+        <div class="eq"></div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Site de présentation de quelques pages</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Adapté au mobile, rapide, référencement de base</li>
@@ -383,7 +408,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
-          <a class="btn btn-dark" href="#contact" data-formule="Vitrine">Choisir la Vitrine</a>
+          <a class="btn btn-dark" href="#contact" data-formule="Vitrine" data-commande="1">Commander la Vitrine</a>
           <a class="btn btn-line" href="#exemples" data-demo="vitrine">Tester l’exemple</a>
         </div>
       </article>
@@ -391,8 +416,9 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
         <span class="tag">Le plus demandé</span>
         <h3>Agenda &amp; réservations</h3>
         <p class="for">Pour les entreprises qui prennent des rendez-vous, des réservations ou des demandes de devis.</p>
-        <div class="price">79,90&nbsp;€ <small>TTC / mois</small></div>
-        <div class="ht">soit 66,58&nbsp;€ HT (TVA 20&nbsp;%)</div>
+        <div class="price" data-base="7990"><span class="pv"></span> <small class="pu"></small></div>
+        <div class="ht"></div>
+        <div class="eq"></div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Tout ce que contient la Vitrine</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Agenda en ligne : rendez-vous, événements, disponibilités</li>
@@ -402,15 +428,16 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
-          <a class="btn btn-go" href="#contact" data-formule="Agenda et réservations">Choisir cette offre</a>
+          <a class="btn btn-go" href="#contact" data-formule="Agenda et réservations" data-commande="1">Commander cette offre</a>
           <a class="btn btn-line" href="#exemples" data-demo="agenda">Tester l’exemple</a>
         </div>
       </article>
       <article class="plan">
         <h3>Boutique en ligne</h3>
         <p class="for">Pour vendre vos produits sur internet, avec paiement sécurisé par carte.</p>
-        <div class="price">89,99&nbsp;€ <small>TTC / mois</small></div>
-        <div class="ht">soit 74,99&nbsp;€ HT (TVA 20&nbsp;%)</div>
+        <div class="price" data-base="8999"><span class="pv"></span> <small class="pu"></small></div>
+        <div class="ht"></div>
+        <div class="eq"></div>
         <ul>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Tout ce que contient la Vitrine</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Catalogue de produits avec photos et fiches détaillées</li>
@@ -420,7 +447,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Aussi disponible en <b>application mobile</b></span></li>
         </ul>
         <div class="acts">
-          <a class="btn btn-dark" href="#contact" data-formule="Boutique en ligne">Demander un devis</a>
+          <a class="btn btn-dark" href="#contact" data-formule="Boutique en ligne" data-commande="1">Commander la boutique</a>
           <a class="btn btn-line" href="#exemples" data-demo="boutique">Tester l’exemple</a>
         </div>
       </article>
@@ -443,7 +470,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
         </div>
       </article>
     </div>
-    <p class="fine">Engagement de 24 mois, ce qui permet de financer la création de votre site sans frais d’entrée. Création d’identité visuelle (logo, charte graphique) et visuels sur mesure en option, sur devis.</p>
+    <p class="fine" id="fine">Création d’identité visuelle (logo, charte graphique) et visuels sur mesure en option, sur devis.</p>
   </div>
 </section>
 
@@ -545,7 +572,17 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
           <option>Boutique en ligne</option>
           <option>Je ne sais pas encore</option>
         </select><div class="err" id="e-sujet" role="alert"></div></div>
+      <div class="field" id="fMode" hidden><label for="mode">Mode de règlement</label>
+        <select id="mode" name="mode" aria-describedby="e-mode">
+          <option value="">Je veux d’abord un devis</option>
+          <option value="24">24 mois : mensualités, engagement de 24 mois</option>
+          <option value="12">12 mois : mensualités, engagement de 12 mois</option>
+          <option value="cash">Comptant : 24 mois réglés d’avance, 2 mois offerts</option>
+        </select></div>
+      <div class="recap" id="recap" aria-live="polite"></div>
+      <div class="field" id="fDom" hidden><label for="domaine">Nom de domaine souhaité <span class="opt">(facultatif)</span></label><input id="domaine" name="domaine" type="text" maxlength="120" placeholder="exemple : monentreprise.fr"></div>
       <div class="field"><label for="message">Votre projet</label><textarea id="message" name="message" required maxlength="4000" aria-describedby="e-message" placeholder="Votre activité, ce que vous attendez du site, votre échéance éventuelle…"></textarea><div class="err" id="e-message" role="alert"></div></div>
+      <div class="field chk" id="fOk" hidden><label for="accord"><input id="accord" name="accord" type="checkbox"><span>Je comprends que cette offre est un abonnement avec engagement. Les conditions détaillées me sont envoyées avec le contrat, et aucun paiement n’est demandé avant ma validation.</span></label><div class="err" id="e-accord" role="alert"></div></div>
       <div class="hp" aria-hidden="true"><label for="site_web">Ne pas remplir</label><input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="status" id="status" role="status" aria-live="polite"></div>
       <button type="submit" id="go" class="btn btn-go">Envoyer ma demande</button>
@@ -635,12 +672,73 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     st.addEventListener('pointerleave', function(){ frame.style.setProperty('--dy', '0deg'); frame.style.setProperty('--dx', '3deg'); });
   }
 
+  /* Modes de règlement : 24 mois (référence), 12 mois (+15 %), comptant (22 mois pour 24) */
+  var PAY = '24';
+  var NOTES = {
+    '24': 'Tarif de référence : engagement de 24 mois, création du site sans frais d’entrée.',
+    '12': 'Engagement plus court : mensualité un peu plus élevée, création du site sans frais d’entrée.',
+    'cash': 'Vous réglez 22 mois et profitez de 24 mois d’abonnement, soit 2 mois offerts.'
+  };
+  var FINE = {
+    '24': 'Engagement de 24 mois, ce qui permet de financer la création de votre site sans frais d’entrée.',
+    '12': 'Engagement de 12 mois, création du site sans frais d’entrée.',
+    'cash': 'Abonnement de 24 mois réglé en une seule fois, 2 mois offerts.'
+  };
+  function eur(c){ return (c / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f').replace(',', ',') + '\u00a0€'; }
+  function calc(base, mode){
+    if (mode === '12') return Math.ceil(base * 1.15 / 10) * 10;
+    if (mode === 'cash') return base * 22;
+    return base;
+  }
+  function renderPay(){
+    document.querySelectorAll('.pay button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.pay === PAY ? 'true' : 'false'); });
+    document.getElementById('payNote').textContent = NOTES[PAY];
+    document.getElementById('fine').textContent = FINE[PAY] + ' Création d’identité visuelle (logo, charte graphique) et visuels sur mesure en option, sur devis.';
+    document.querySelectorAll('.plan .price[data-base]').forEach(function(pr){
+      var base = +pr.dataset.base, c = calc(base, PAY), box = pr.parentNode;
+      pr.querySelector('.pv').textContent = eur(c);
+      pr.querySelector('.pu').textContent = PAY === 'cash' ? 'TTC, une seule fois' : 'TTC / mois';
+      box.querySelector('.ht').textContent = 'soit ' + eur(Math.round(c / 1.2)) + ' HT (TVA 20\u00a0%)' + (PAY === 'cash' ? ', pour 24 mois' : '');
+      box.querySelector('.eq').textContent = PAY === 'cash' ? 'soit ' + eur(Math.round(c / 24)) + ' par mois, au lieu de ' + eur(base) : '';
+    });
+    updateOrder();
+  }
+  document.querySelectorAll('.pay button').forEach(function(b){
+    b.addEventListener('click', function(){ PAY = b.dataset.pay; renderPay(); });
+  });
+
+  /* Commande : même formulaire, avec récapitulatif et accord */
+  var PRICED = {'Vitrine': 5990, 'Agenda et réservations': 7990, 'Boutique en ligne': 8999};
+  var MODE_TXT = {'24': 'en mensualités, engagement de 24 mois', '12': 'en mensualités, engagement de 12 mois', 'cash': 'comptant pour 24 mois'};
+  function recapText(){
+    var sj = document.getElementById('sujet').value, md = document.getElementById('mode').value;
+    if (!(sj in PRICED) || !md) return '';
+    var c = calc(PRICED[sj], md);
+    var montant = md === 'cash' ? '<b>' + eur(c) + ' TTC</b> en une seule fois' : '<b>' + eur(c) + ' TTC par mois</b> pendant ' + md + ' mois';
+    return '<b>' + sj + '</b>, règlement ' + MODE_TXT[md] + ' : ' + montant + '.';
+  }
+  function updateOrder(){
+    var sjEl = document.getElementById('sujet'), md = document.getElementById('mode');
+    if (!sjEl) return;
+    var priced = sjEl.value in PRICED;
+    document.getElementById('fMode').hidden = !priced;
+    if (!priced) md.value = '';
+    var order = priced && !!md.value;
+    var rc = document.getElementById('recap'); rc.innerHTML = recapText(); rc.classList.toggle('show', order);
+    document.getElementById('fDom').hidden = !order;
+    document.getElementById('fOk').hidden = !order;
+    document.getElementById('go').textContent = order ? 'Envoyer ma commande' : 'Envoyer ma demande';
+  }
+  document.getElementById('sujet').addEventListener('change', updateOrder);
+  document.getElementById('mode').addEventListener('change', updateOrder);
+
   /* « Choisir » : préremplit la formule du formulaire */
   document.querySelectorAll('[data-formule]').forEach(function(a){
-    a.addEventListener('click', function(){ var s = document.getElementById('sujet'); if (s) s.value = a.dataset.formule; });
+    a.addEventListener('click', function(){ var s = document.getElementById('sujet'); if (s) s.value = a.dataset.formule; var m = document.getElementById('mode'); if (m) m.value = a.dataset.commande ? PAY : ''; updateOrder(); });
   });
   var qf = new URLSearchParams(location.search).get('formule');
   if (qf) { var s0 = document.getElementById('sujet'); if (s0) s0.value = qf; }
+  renderPay();
 
   /* Formulaire de contact */
   var f = document.getElementById('f'), go = document.getElementById('go'), st2 = document.getElementById('status');
@@ -658,6 +756,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     if (f.telephone.value.replace(/\D/g,'').length < 6) bad('telephone', 'Indiquez un numéro de téléphone.');
     if (!f.sujet.value) bad('sujet', 'Choisissez une offre, ou « Je ne sais pas encore ».');
     if (f.message.value.trim().length < 10) bad('message', 'Décrivez votre projet en quelques mots.');
+    setErr('accord',''); if (f.mode.value && f.sujet.value in PRICED && !f.accord.checked) bad('accord', 'Cochez la case pour confirmer votre commande.');
     if (first) first.focus();
     return ok;
   }
@@ -669,7 +768,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       method: 'POST', headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(Object.assign({
         nom: f.nom.value.trim(), email: f.email.value.trim(), telephone: f.telephone.value.trim(), organisme: f.organisme.value.trim(),
-        sujet: f.sujet.value, message: f.message.value.trim(), site_web: f.site_web.value, cle: cle, session_id: sid,
+        sujet: f.sujet.value, message: (function(){ var t = f.message.value.trim(), r = recapText().replace(/<[^>]+>/g, ''); if (!r) return t; return '[COMMANDE] ' + r + (f.domaine.value.trim() ? ' Nom de domaine souhaité : ' + f.domaine.value.trim() + '.' : '') + '\n\n' + t; })(), site_web: f.site_web.value, cle: cle, session_id: sid,
         page: '/contact-digital', site: 'digital', lang: 'fr',
         dt: window.slpAS ? window.slpAS.dt() : Math.round(performance.now()), cf_token: window.slpAS ? window.slpAS.token() : ''
       }, window.slpAS ? window.slpAS.captcha() : {}))
@@ -677,7 +776,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       .then(function(x){
         if (x.d && x.d.ok) {
           show('ok', 'Merci, votre demande est bien enregistrée' + (x.d.reference ? ' (référence ' + x.d.reference + ')' : '') + '. Nous vous répondons sous 24 h ouvrées.');
-          f.reset(); cle = 'dg-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+          f.reset(); updateOrder(); cle = 'dg-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
         } else {
           if (window.slpAS) window.slpAS.captchaReset();
           if (x.d && x.d.champ && x.d.champ !== 'captcha') setErr(x.d.champ, x.d.error || '');
