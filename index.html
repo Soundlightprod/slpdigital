@@ -64,7 +64,7 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 @media(max-width:860px){.nav nav a:not(.btn){display:none}}
 
 /* Hero */
-.hero{position:relative;padding:56px 0 40px;overflow:hidden}
+.hero{position:relative;padding:40px 0 28px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:90%;background:radial-gradient(60% 60% at 70% 30%,rgba(91,75,255,.28),transparent 70%),radial-gradient(40% 50% at 90% 60%,rgba(168,85,247,.16),transparent 70%);pointer-events:none}
 .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr 1fr;gap:24px;align-items:center}
 .hero h1{font-size:clamp(2.3rem,4.3vw,3.7rem);font-weight:800;letter-spacing:-.035em}
@@ -79,7 +79,7 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 
 
 /* Bandeau de promesses */
-.proofs{position:relative;padding:0 0 84px}
+.proofs{position:relative;padding:0 0 44px}
 .proofs ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ligne);border-radius:18px;background:linear-gradient(180deg,rgba(31,26,85,.55),rgba(21,17,58,.35));overflow:hidden}
 .proofs li{padding:26px 26px 24px;border-left:1px solid var(--ligne)}
 .proofs li:first-child{border-left:0}
@@ -143,11 +143,11 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 @media(max-width:560px){.stage{height:400px}.rig{scale:.58;transform-origin:50% 30%;left:-10%;right:-10%}.win-agenda{left:-2%}.win-priv{right:0}}
 
 /* Sections */
-section.s{padding:104px 0}
+section.s{padding:64px 0}
 .s-clair{background:var(--papier);color:var(--encre)}
 .s-nuit{background:var(--nuit)}
 .s-scene{background:linear-gradient(180deg,var(--nuit),var(--scene) 40%,var(--nuit))}
-.s-head{max-width:46em;margin-bottom:56px}
+.s-head{max-width:46em;margin-bottom:36px}
 .s-head h2{font-size:clamp(2rem,3.8vw,3.1rem)}
 .s-head p{margin-top:16px;font-size:1.12rem;color:var(--doux)}
 .s-clair .s-head p{color:var(--doux-clair)}
@@ -300,7 +300,7 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
 .hero .btn-go::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);animation:shine 5s 1.6s ease-in-out infinite}
 @keyframes shine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 
-.metiers{margin-top:-30px;padding:0 0 8px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.metiers{margin-top:0;padding:0 0 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .metiers p{text-align:center;color:var(--doux);font-size:.98rem;margin-bottom:18px}
 .metiers .track{display:flex;width:max-content;animation:defile 46s linear infinite}
 .metiers:hover .track{animation-play-state:paused}
@@ -328,7 +328,7 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
 .plan.star .price{background:linear-gradient(90deg,#fff,var(--ambre));-webkit-background-clip:text;background-clip:text;color:transparent}
 .steps li::before{background:linear-gradient(140deg,var(--cta),var(--encre));box-shadow:0 10px 24px -8px rgba(102,87,224,.6)}
 #formules,#methode{position:relative}
-#formules::before{content:"";position:absolute;left:0;right:0;top:0;height:110px;background:linear-gradient(180deg,rgba(10,8,32,.14),transparent);pointer-events:none}
+
 @media(prefers-reduced-motion:reduce){.metiers .track,.hero .btn-go::after,.hero-grid>div:first-child>*{animation:none}.metiers{-webkit-mask-image:none;mask-image:none}.metiers .track{flex-wrap:wrap;width:auto;justify-content:center}}
 
 </style>
