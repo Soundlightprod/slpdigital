@@ -384,6 +384,10 @@ body{font-size:16px}
 .pont-g figcaption{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;display:grid;gap:2px;color:#fff}
 .pont-g figcaption b{font:700 1.1rem var(--titre)}.pont-g figcaption span{font-size:.86rem;color:#D8D4F5;line-height:1.35}
 @media(max-width:900px){.pont-g{grid-template-columns:repeat(2,1fr)}}
+.demo-frame{position:relative}.demo-frame iframe{pointer-events:none;overflow:hidden}
+.demo-go{position:absolute;left:0;right:0;top:36px;bottom:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:22px;background:linear-gradient(180deg,transparent 70%,rgba(10,8,32,.35));cursor:pointer;text-decoration:none}
+.demo-go span{background:var(--cta);color:#fff;font:700 .95rem var(--corps);padding:11px 22px;border-radius:30px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);opacity:0;transform:translateY(6px);transition:.2s}
+.demo-frame:hover .demo-go span,.demo-go:focus-visible span{opacity:1;transform:none}
 </style>
 </head>
 <body>
@@ -623,7 +627,7 @@ body{font-size:16px}
   <div class="wrap">
     <div class="s-head">
       <h2>Testez-les en grandeur nature</h2>
-      <p>Nos propres sites, un exemple de réservation et un espace privé avec ses niveaux de droits. Tout se teste : rien n’est simulé.</p>
+      <p>Nos propres sites, un exemple de réservation et un espace privé avec ses niveaux de droits. Cliquez sur l’aperçu pour l’ouvrir en plein écran et tout tester : rien n’est simulé.</p>
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Exemples de sites">
       <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine</button>
@@ -634,7 +638,8 @@ body{font-size:16px}
     <div class="demo-stage" id="demoStage">
       <div class="demo-frame" id="demoFrame" role="tabpanel" aria-labelledby="t-vitrine">
         <div class="bar"><i></i><i></i><i></i><b id="demoUrl">soundlightprod.fr</b></div>
-        <iframe id="demoIframe" title="Exemple de site" loading="lazy" src="about:blank"></iframe>
+        <iframe id="demoIframe" title="Aperçu de l’exemple" loading="lazy" scrolling="no" tabindex="-1" src="about:blank"></iframe>
+        <a class="demo-go" href="#" id="demoGo" aria-label="Ouvrir cet exemple en plein écran"><span>Ouvrir l’exemple</span></a>
       </div>
     </div>
     <div class="demo-meta">
@@ -779,6 +784,7 @@ body{font-size:16px}
     document.getElementById('demoUrl').textContent = d.url;
     document.getElementById('demoText').textContent = d.text;
     var o = document.getElementById('demoOpen'); o.href = d.open; if (d.ext) { o.target = '_blank'; o.rel = 'noopener'; } else { o.removeAttribute('target'); }
+    var g = document.getElementById('demoGo'); g.href = d.open; if (d.ext) { g.target = '_blank'; g.rel = 'noopener'; } else { g.removeAttribute('target'); }
     var w = document.getElementById('demoWant'); w.dataset.formule = d.formule;
     if (scroll) document.getElementById('exemples').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
   }
