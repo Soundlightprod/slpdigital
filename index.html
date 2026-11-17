@@ -187,7 +187,7 @@ section.s{padding:64px 0}
 .field[hidden]{display:none}
 .paynext{display:none;gap:10px;margin-top:4px}.paynext.show{display:grid}.paynext p{color:var(--doux);font-size:.93rem}
 /* Formules */
-.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;perspective:1400px;align-items:stretch}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;perspective:1400px;align-items:stretch}
 .plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #DCDAF0;border-radius:22px;padding:34px 30px;transform-style:preserve-3d;transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .2s ease-out,box-shadow .25s;box-shadow:0 20px 50px -30px rgba(14,16,32,.25)}
 .plan:hover{box-shadow:0 36px 70px -28px rgba(14,16,32,.4)}
 .plan.star{background:var(--encre);color:#fff;border-color:var(--encre);box-shadow:0 40px 80px -30px rgba(91,75,255,.6)}
@@ -207,7 +207,8 @@ section.s{padding:64px 0}
 .plan .acts .btn{min-height:48px}
 .plan.star .btn-line{border-color:rgba(255,255,255,.4);color:#fff}.plan.star .btn-line:hover{background:#fff;color:var(--encre)}
 .fine{margin-top:34px;color:var(--doux-clair);font-size:.95rem;max-width:56em}
-@media(max-width:980px){.plans{grid-template-columns:1fr;max-width:520px;margin:0 auto}.plan .for{min-height:0}}
+@media(max-width:1100px){.plans{grid-template-columns:repeat(2,1fr);gap:26px}.plan .for{min-height:0}}
+@media(max-width:700px){.plans{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
 
 /* Démos */
 .demo-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
@@ -331,6 +332,8 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
 
 @media(prefers-reduced-motion:reduce){.metiers .track,.hero .btn-go::after,.hero-grid>div:first-child>*{animation:none}.metiers{-webkit-mask-image:none;mask-image:none}.metiers .track{flex-wrap:wrap;width:auto;justify-content:center}}
 
+@media(min-width:1101px){.plans .plan{padding:30px 22px}.plans .plan h3{font-size:1.35rem}.plans .plan .price{font-size:2.3rem}.plans .plan .tag{left:22px}.plans .plan ul{font-size:.92rem;gap:10px}.plans .plan li svg{width:17px;height:17px}}
+@media(min-width:1101px){.plans .plan .acts .btn{text-align:center;justify-content:center;font-size:.93rem;line-height:1.2;padding-left:12px;padding-right:12px}}
 </style>
 </head>
 <body>
