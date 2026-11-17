@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Oréa — Coiffure à Bergerac · Réservation en ligne (exemple de démonstration)</title>
+<title>Studio Oréa — Coiffure à Bayeux · Réservation en ligne (exemple de démonstration)</title>
 <meta name="robots" content="noindex, nofollow">
 <style>
 :root{--prune:#3B1747;--prune2:#582266;--rose:#D9548C;--rose-clair:#FBE8F0;--creme:#FBF7F3;--encre:#241329;--doux:#7A6683;--ligne:#E9DEE7;--ok:#1C8A5B;--sans:"Segoe UI",system-ui,-apple-system,sans-serif;--titre:"Trebuchet MS","Segoe UI",system-ui,sans-serif}
@@ -120,15 +120,15 @@ footer.ft{background:var(--prune);color:#E8D5EE;padding:50px 0 34px}
 
 <header class="site"><div class="wrap nav">
   <a class="logo" href="#top">Studio Oré<i>a</i></a>
-  <nav aria-label="Navigation"><a href="#prestations">Prestations</a><a href="#equipe">L’équipe</a><a href="#salon">Le salon</a><a class="tel" href="tel:+33553000000">05 53 00 00 00</a><a class="btn rose" href="#reserver" style="padding:10px 20px;font-size:.92rem">Réserver</a></nav>
+  <nav aria-label="Navigation"><a href="#prestations">Prestations</a><a href="#equipe">L’équipe</a><a href="#salon">Le salon</a><a class="tel" href="tel:+33553000000">02 31 00 00 00</a><a class="btn rose" href="#reserver" style="padding:10px 20px;font-size:.92rem">Réserver</a></nav>
 </div></header>
 
 <main id="top">
 <section class="hero"><div class="wrap">
-  <h1>Votre moment à vous, au cœur de Bergerac.</h1>
+  <h1>Votre moment à vous, au cœur de Bayeux.</h1>
   <p>Coupe, couleur, soins : une équipe de trois coiffeurs, des produits respectueux et un salon pensé pour prendre le temps.</p>
   <div class="acts"><a class="btn rose" href="#reserver">Réserver en ligne</a><a class="btn line" href="#prestations">Voir les tarifs</a></div>
-  <div class="info"><span>Du mardi au samedi · 9 h – 18 h 30</span><span>8 rue Neuve d’Argenson, Bergerac</span></div>
+  <div class="info"><span>Du mardi au samedi · 9 h – 18 h 30</span><span>8 rue Saint-Martin, Bayeux</span></div>
 </div></section>
 
 <section class="blk" id="prestations"><div class="wrap">
@@ -170,13 +170,13 @@ footer.ft{background:var(--prune);color:#E8D5EE;padding:50px 0 34px}
 </div></section>
 
 <section class="blk" id="salon"><div class="wrap">
-  <h2>Le salon</h2><p class="sub">Un espace lumineux au cœur de Bergerac.</p>
+  <h2>Le salon</h2><p class="sub">Un espace lumineux au cœur de Bayeux.</p>
   <div class="gal"><figure style="background-image:url(https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=700&q=72)"></figure><figure style="background-image:url(https://images.unsplash.com/photo-1626379501846-0df4067b8bb9?auto=format&fit=crop&w=700&q=72)"></figure><figure style="background-image:url(https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=700&q=72)"></figure><figure style="background-image:url(https://images.unsplash.com/photo-1695527081874-b674c46f40fb?auto=format&fit=crop&w=700&q=72)"></figure></div>
 </div></section>
 </main>
 
 <footer class="ft"><div class="wrap"><div class="cols">
-  <div><h4>Studio Oréa</h4><p>Salon de coiffure mixte à Bergerac.<br>8 rue Neuve d’Argenson, 24100 Bergerac<br>05 53 00 00 00</p></div>
+  <div><h4>Studio Oréa</h4><p>Salon de coiffure mixte à Bayeux.<br>8 rue Saint-Martin, 14400 Bayeux<br>02 31 00 00 00</p></div>
   <div><h4>Horaires</h4><ul><li>Mardi – vendredi : 9 h – 18 h 30</li><li>Samedi : 9 h – 18 h</li><li>Dimanche et lundi : fermé</li></ul></div>
   <div><h4>Infos</h4><ul><li>Paiement : espèces, carte, chèque</li><li>Annulation gratuite jusqu’à 24 h avant</li></ul></div>
 </div><div class="cp">© Studio Oréa (entreprise fictive) · Site réalisé par SLP Digital, offre Agenda &amp; réservations</div></div></footer>
@@ -252,8 +252,8 @@ footer.ft{background:var(--prune);color:#E8D5EE;padding:50px 0 34px}
     var url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
     var who=st.p.id==='any'?'l’équipe':st.p.n;
     $('reserver').querySelector('.bk').innerHTML='<div class="card" style="grid-column:1/-1"><div class="conf"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><h3>C’est confirmé, '+nom+' !</h3><p>Votre rendez-vous est réservé. Référence '+ref+'.</p>'+
-    '<div class="recap"><div><b>'+st.s.n+'</b> · '+st.s.d+' min · '+st.s.p+' €</div><div>'+fmtD(st.day)+' à '+h+' avec '+who+'</div><div>Studio Oréa, 8 rue Neuve d’Argenson, Bergerac</div></div>'+
-    '<div class="mail"><div class="mh">Email envoyé à '+$('ml').value.trim().replace(/</g,'&lt;')+'</div><div class="mb2"><b>Votre rendez-vous au Studio Oréa est confirmé</b><span>Bonjour '+nom.replace(/</g,'&lt;')+', nous vous attendons le '+fmtD(st.day)+' à '+h+'.</span><span style="color:var(--doux)">Besoin de modifier ? Répondez à ce message ou appelez le 05 53 00 00 00.</span></div></div>'+
+    '<div class="recap"><div><b>'+st.s.n+'</b> · '+st.s.d+' min · '+st.s.p+' €</div><div>'+fmtD(st.day)+' à '+h+' avec '+who+'</div><div>Studio Oréa, 8 rue Saint-Martin, Bayeux</div></div>'+
+    '<div class="mail"><div class="mh">Email envoyé à '+$('ml').value.trim().replace(/</g,'&lt;')+'</div><div class="mb2"><b>Votre rendez-vous au Studio Oréa est confirmé</b><span>Bonjour '+nom.replace(/</g,'&lt;')+', nous vous attendons le '+fmtD(st.day)+' à '+h+'.</span><span style="color:var(--doux)">Besoin de modifier ? Répondez à ce message ou appelez le 02 31 00 00 00.</span></div></div>'+
     '<div class="row"><a class="btn rose" href="'+url+'" download="rendez-vous-studio-orea.ics">Ajouter à mon calendrier</a><button class="btn line" onclick="location.reload()">Nouvelle réservation</button></div>'+
     '<p class="note">Exemple de démonstration : aucun message n’a été réellement envoyé. Sur votre site, le client reçoit cet email et vous êtes prévenu immédiatement.</p></div></div>';
     $('reserver').scrollIntoView({behavior:'smooth'});
