@@ -216,7 +216,7 @@ section.s{padding:64px 0}
 .demo-tabs button:hover{color:#fff;border-color:var(--doux)}
 .demo-tabs button[aria-selected=true]{background:var(--cta);color:#fff;border-color:var(--cta)}
 .demo-stage{perspective:2000px;perspective-origin:50% 0}
-.demo-frame{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 60px 110px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);transform:rotateX(var(--dx,3deg)) rotateY(var(--dy,0deg));transition:transform .25s ease-out,width .4s,max-width .4s;margin:0 auto;max-width:100%}
+.demo-frame{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 60px 110px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);transform:rotateX(var(--dx,1deg)) rotateY(var(--dy,0deg));transition:transform .25s ease-out,width .4s,max-width .4s;margin:0 auto;max-width:100%}
 .demo-frame.mobile{width:398px}
 .demo-frame .bar{display:flex;align-items:center;gap:7px;height:42px;padding:0 16px;background:#E8E7F5;border-bottom:1px solid #D6D4EC;color:#555B80}
 .demo-frame .bar i{width:11px;height:11px;border-radius:50%}
@@ -334,6 +334,44 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
 
 @media(min-width:1101px){.plans .plan{padding:30px 22px}.plans .plan h3{font-size:1.35rem}.plans .plan .price{font-size:2.3rem}.plans .plan .tag{left:22px}.plans .plan ul{font-size:.92rem;gap:10px}.plans .plan li svg{width:17px;height:17px}}
 @media(min-width:1101px){.plans .plan .acts .btn{text-align:center;justify-content:center;font-size:.93rem;line-height:1.2;padding-left:12px;padding-right:12px}}
+/* Typographie plus fine + fenêtre d'exemple adaptée à l'écran */
+body{font-size:16px}
+.hero h1{font-size:clamp(2.1rem,3.7vw,3.2rem);letter-spacing:-.03em}
+.s-head h2,.contact h2{font-size:clamp(1.8rem,3vw,2.45rem)}
+.s-head p{font-size:1.04rem;margin-top:12px}
+.s-head{margin-bottom:30px}
+.btn{font-size:.97rem;min-height:48px}
+.nav nav a{font-size:.92rem}
+.proofs b{font-size:2rem}
+.metiers span{font-size:clamp(1.25rem,2.4vw,1.8rem)}
+.faq summary{font-size:1.02rem}
+.steps li::before{font-size:1.05rem}
+#exemples .s-head{margin-bottom:18px}
+#exemples .s-head h2{font-size:clamp(1.7rem,2.6vw,2.15rem)}
+#exemples .s-head p{margin-top:8px;font-size:1rem;max-width:42em}
+.demo-tabs{margin-bottom:16px;gap:8px}
+.demo-tabs button{font-size:.93rem;padding:10px 18px}
+.demo-frame .bar{height:36px}
+.demo-frame iframe{height:clamp(340px,calc(100vh - 430px),700px)}
+#exemples.s{padding-top:24px;padding-bottom:40px}
+#exemples .s-head p{max-width:none}
+.demo-meta{margin-top:18px}
+@media(min-width:1101px){.plans .plan .price{font-size:2.1rem}}
+#formules.s{padding-top:26px;padding-bottom:48px}
+#formules .s-head{max-width:none;margin-bottom:26px}
+#formules .s-head h2{font-size:clamp(1.6rem,2.5vw,2.1rem)}
+#formules .s-head p{margin-top:6px;font-size:1rem;max-width:none}
+#formules .paybar{margin-bottom:22px}
+@media(min-width:1101px){
+.plans .plan{padding:24px 20px}
+.plans .plan h3{font-size:1.25rem}
+.plans .plan .for{margin-top:6px;font-size:.9rem;min-height:3.9em;line-height:1.45}
+.plans .plan .price{margin:14px 0 2px;font-size:2rem}
+.plans .plan .ht{font-size:.82rem}
+.plans .plan ul{margin:16px 0 20px;gap:7px;font-size:.88rem;line-height:1.4}
+.plans .plan li{gap:9px}.plans .plan li svg{width:15px;height:15px;margin-top:2px}
+.plans .plan .acts{gap:8px}.plans .plan .acts .btn{min-height:44px}
+}
 </style>
 </head>
 <body>
@@ -550,7 +588,7 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
   <div class="wrap">
     <div class="s-head">
       <h2>Testez-les en grandeur nature</h2>
-      <p>Parcourez nos propres sites, créés et hébergés selon le même principe, un exemple de réservation en ligne et un espace privé avec ses niveaux de droits. Vous pouvez tout tester : rien n’est simulé.</p>
+      <p>Nos propres sites, un exemple de réservation et un espace privé avec ses niveaux de droits. Tout se teste : rien n’est simulé.</p>
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Exemples de sites">
       <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine</button>
@@ -739,9 +777,9 @@ body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opa
     st.addEventListener('pointermove', function(e){
       var r = st.getBoundingClientRect();
       frame.style.setProperty('--dy', (((e.clientX - r.left) / r.width - .5) * 5).toFixed(2) + 'deg');
-      frame.style.setProperty('--dx', (3 + ((.5 - (e.clientY - r.top) / r.height)) * 3).toFixed(2) + 'deg');
+      frame.style.setProperty('--dx', (1 + ((.5 - (e.clientY - r.top) / r.height)) * 2).toFixed(2) + 'deg');
     });
-    st.addEventListener('pointerleave', function(){ frame.style.setProperty('--dy', '0deg'); frame.style.setProperty('--dx', '3deg'); });
+    st.addEventListener('pointerleave', function(){ frame.style.setProperty('--dy', '0deg'); frame.style.setProperty('--dx', '1deg'); });
   }
 
   /* Modes de règlement : 24 mois (référence), 12 mois (+15 %), comptant (22 mois pour 24) */
