@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SLP Digital — Votre site internet professionnel, par abonnement</title>
-<meta name="description" content="Site internet professionnel créé, hébergé et entretenu pour 59,90 € TTC par mois. Sans frais de création. Aussi disponible en application mobile.">
+<meta name="description" content="Site internet professionnel créé, hébergé et entretenu pour 59,90 € TTC par mois. Sans frais de création, maquette sous 7 jours ouvrés.">
 <link rel="canonical" href="https://slpdigital.fr/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SLP Digital — Votre site internet professionnel, par abonnement">
@@ -64,10 +64,10 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 @media(max-width:860px){.nav nav a:not(.btn){display:none}}
 
 /* Hero */
-.hero{position:relative;padding:56px 0 96px;overflow:hidden}
+.hero{position:relative;padding:56px 0 40px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:90%;background:radial-gradient(60% 60% at 70% 30%,rgba(91,75,255,.28),transparent 70%),radial-gradient(40% 50% at 90% 60%,rgba(168,85,247,.16),transparent 70%);pointer-events:none}
 .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr 1fr;gap:24px;align-items:center}
-.hero h1{font-size:clamp(2.5rem,5.2vw,4.4rem);font-weight:800;letter-spacing:-.035em}
+.hero h1{font-size:clamp(2.3rem,4.3vw,3.7rem);font-weight:800;letter-spacing:-.035em}
 .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--ambre),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lead{margin-top:22px;font-size:1.2rem;color:var(--doux);max-width:34em}
 .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
@@ -76,6 +76,18 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 .ticks svg{flex:none;width:20px;height:20px;color:var(--ambre)}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.hero{padding-top:36px}}
 @media(max-width:520px){.ticks{grid-template-columns:1fr}}
+
+
+/* Bandeau de promesses */
+.proofs{position:relative;padding:0 0 84px}
+.proofs ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ligne);border-radius:18px;background:linear-gradient(180deg,rgba(31,26,85,.55),rgba(21,17,58,.35));overflow:hidden}
+.proofs li{padding:26px 26px 24px;border-left:1px solid var(--ligne)}
+.proofs li:first-child{border-left:0}
+.proofs b{display:block;font:800 2.4rem/1 var(--titre);letter-spacing:-.03em;background:linear-gradient(90deg,var(--ambre),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-ligatures:none}
+.proofs span{display:block;margin-top:10px;color:var(--doux);font-size:.98rem;line-height:1.45}
+@media(max-width:900px){.proofs ul{grid-template-columns:1fr 1fr}.proofs li:nth-child(3){border-left:0}.proofs li:nth-child(n+3){border-top:1px solid var(--ligne)}}
+@media(max-width:480px){.proofs li{padding:20px 18px}.proofs b{font-size:1.9rem}}
+
 
 /* Scène 3D */
 .stage{position:relative;height:560px;perspective:1700px;perspective-origin:50% 40%}
@@ -276,6 +288,49 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px 36px;justify-content:space-bet
 footer img{height:38px;width:auto}
 footer a{color:var(--doux)}footer a:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rig{transform:rotateX(5deg) rotateY(-14deg)!important}}
+/* Finition : grain, entrée du hero, défilé des métiers, bento, transitions */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+.stage{height:620px}
+.hero-grid>div:first-child>*{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-grid>div:first-child>.lead{animation-delay:.12s}
+.hero-grid>div:first-child>.actions{animation-delay:.24s}
+.hero-grid>div:first-child>.ticks{animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero .btn-go{position:relative;overflow:hidden}
+.hero .btn-go::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);animation:shine 5s 1.6s ease-in-out infinite}
+@keyframes shine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+
+.metiers{margin-top:-30px;padding:0 0 8px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.metiers p{text-align:center;color:var(--doux);font-size:.98rem;margin-bottom:18px}
+.metiers .track{display:flex;width:max-content;animation:defile 46s linear infinite}
+.metiers:hover .track{animation-play-state:paused}
+.metiers span{flex:none;padding:0 28px;font:700 clamp(1.5rem,3vw,2.3rem)/1.2 var(--titre);letter-spacing:-.02em;color:rgba(177,171,221,.55);font-variant-ligatures:none;white-space:nowrap}
+.metiers span::after{content:"";display:inline-block;width:9px;height:9px;margin-left:56px;border-radius:50%;background:var(--violet);vertical-align:middle;opacity:.7}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+.grid4{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;border:0;border-radius:0;overflow:visible}
+.grid4 article{position:relative;grid-column:span 2;overflow:hidden;border:1px solid var(--ligne);border-radius:22px;padding:34px 30px;background:linear-gradient(160deg,rgba(31,26,85,.6),rgba(15,12,44,.5));transition:border-color .25s,transform .25s}
+.grid4 article:nth-child(1),.grid4 article:nth-child(4){grid-column:span 4}
+.grid4 article:nth-child(1){background:linear-gradient(135deg,rgba(102,87,224,.45),rgba(31,26,85,.55) 55%,rgba(15,12,44,.5))}
+.grid4 article:nth-child(1) h3{font-size:1.7rem;max-width:12em}
+.grid4 article:nth-child(1) p{max-width:30em;font-size:1.05rem}
+.grid4 article::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(169,156,240,.22),transparent 60%)}
+.grid4 article:hover{border-color:rgba(169,156,240,.6);transform:translateY(-3px)}
+.grid4 article:hover::before{opacity:1}
+.grid4 article>*{position:relative}
+.grid4 svg{width:42px;height:42px;padding:9px;box-sizing:content-box;border-radius:14px;background:rgba(169,156,240,.14);margin-bottom:24px}
+@media(max-width:980px){.grid4{grid-template-columns:1fr 1fr}.grid4 article,.grid4 article:nth-child(1),.grid4 article:nth-child(4){grid-column:auto;border-right:1px solid var(--ligne);border-bottom:1px solid var(--ligne)}.grid4 article:nth-child(1){grid-column:1/-1}}
+@media(max-width:560px){.grid4{grid-template-columns:1fr}.grid4 article:nth-child(1){grid-column:auto}}
+
+.plan.star{background:linear-gradient(165deg,#17124a,var(--encre) 60%)}
+.plan.star::before{content:"";position:absolute;inset:-1px;border-radius:23px;padding:1.5px;background:linear-gradient(140deg,var(--ambre),transparent 40%,var(--bleu) 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.plan .price{background:linear-gradient(90deg,currentColor,currentColor);-webkit-background-clip:text;background-clip:text}
+.plan.star .price{background:linear-gradient(90deg,#fff,var(--ambre));-webkit-background-clip:text;background-clip:text;color:transparent}
+.steps li::before{background:linear-gradient(140deg,var(--cta),var(--encre));box-shadow:0 10px 24px -8px rgba(102,87,224,.6)}
+#formules,#methode{position:relative}
+#formules::before{content:"";position:absolute;left:0;right:0;top:0;height:110px;background:linear-gradient(180deg,rgba(10,8,32,.14),transparent);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.metiers .track,.hero .btn-go::after,.hero-grid>div:first-child>*{animation:none}.metiers{-webkit-mask-image:none;mask-image:none}.metiers .track{flex-wrap:wrap;width:auto;justify-content:center}}
+
 </style>
 </head>
 <body>
@@ -339,6 +394,22 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
   </div>
 </section>
 
+<section class="proofs" aria-label="Nos engagements">
+  <div class="wrap">
+    <ul>
+      <li><b>0&nbsp;€</b><span>de frais de création, tout est dans l’abonnement</span></li>
+      <li><b>24&nbsp;h</b><span>ouvrées pour vous rappeler et cadrer votre projet</span></li>
+      <li><b>7&nbsp;jours</b><span>ouvrés pour votre première maquette, si vous avez votre logo</span></li>
+      <li><b>À vous</b><span>le site et le nom de domaine vous reviennent en fin de contrat</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="metiers" aria-label="Pour tous les métiers">
+  <p>Un site à l’image de votre métier</p>
+  <div class="track" aria-hidden="true"><span>Artisans</span><span>Commerçants</span><span>Restaurateurs</span><span>Coiffeurs et instituts</span><span>Professions libérales</span><span>Associations</span><span>Coachs et formateurs</span><span>Hôtels et gîtes</span><span>Artistes et créateurs</span><span>Artisans</span><span>Commerçants</span><span>Restaurateurs</span><span>Coiffeurs et instituts</span><span>Professions libérales</span><span>Associations</span><span>Coachs et formateurs</span><span>Hôtels et gîtes</span><span>Artistes et créateurs</span></div>
+</div>
+
 <!-- CE QUE VOUS OBTENEZ -->
 <section class="s s-nuit" id="atouts">
   <div class="wrap">
@@ -371,8 +442,8 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     <div class="appband">
       <div class="phn" aria-hidden="true"><div class="ph-s"><i></i><i></i><i></i><b></b></div></div>
       <div>
-        <h3>Votre site devient aussi une application mobile</h3>
-        <p>Sur toutes nos offres, votre site s’installe sur l’écran d’accueil du téléphone, avec votre icône et en plein écran, comme une vraie application. Pas de magasin d’applications, pas de mise à jour à gérer. C’est le même principe que les espaces et applications que nous avons créés pour SLP.</p>
+        <h3>Et une application mobile, quand cela s’y prête</h3>
+        <p>Pour un espace privé ou un intranet utilisé au quotidien par votre équipe, le site s’installe sur l’écran d’accueil du téléphone, avec votre icône et en plein écran, comme une vraie application. Pas de magasin d’applications, pas de mise à jour à gérer. C’est le même principe que les espaces et applications que nous avons créés pour SLP.</p>
       </div>
     </div>
   </div>
@@ -813,6 +884,12 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ artist_slug: "accueil", session_id: sid, site: "digital", ref: document.referrer })
   }).catch(function(){});
+})();
+
+(function(){
+  document.querySelectorAll('.grid4 article').forEach(function(a){
+    a.addEventListener('pointermove',function(e){var b=a.getBoundingClientRect();a.style.setProperty('--mx',(e.clientX-b.left)+'px');a.style.setProperty('--my',(e.clientY-b.top)+'px');});
+  });
 })();
 </script>
 </body>
