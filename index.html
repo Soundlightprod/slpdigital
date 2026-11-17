@@ -579,7 +579,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       <div class="recap" id="recap" aria-live="polite"></div>
       <div class="field" id="fDom" hidden><label for="domaine">Nom de domaine souhaité <span class="opt">(facultatif)</span></label><input id="domaine" name="domaine" type="text" maxlength="120" placeholder="exemple : monentreprise.fr"></div>
       <div class="field"><label for="message">Votre projet</label><textarea id="message" name="message" required maxlength="4000" aria-describedby="e-message" placeholder="Votre activité, ce que vous attendez du site, votre échéance éventuelle…"></textarea><div class="err" id="e-message" role="alert"></div></div>
-      <div class="field chk" id="fOk" hidden><label for="accord"><input id="accord" name="accord" type="checkbox"><span>Je comprends que cette offre est un abonnement avec engagement. Les conditions de vente me sont communiquées avant tout paiement, et aucun paiement n’est demandé avant ma validation.</span></label><div class="err" id="e-accord" role="alert"></div></div>
+      <div class="field chk" id="fOk" hidden><label for="accord"><input id="accord" name="accord" type="checkbox"><span>J’ai lu les <a href="/conditions-de-vente" target="_blank" rel="noopener">conditions générales de vente</a> et je comprends que cette offre est un abonnement avec engagement.</span></label><div class="err" id="e-accord" role="alert"></div></div>
       <div class="hp" aria-hidden="true"><label for="site_web">Ne pas remplir</label><input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="status" id="status" role="status" aria-live="polite"></div>
       <div class="paynext" id="payNext"></div>
@@ -593,7 +593,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
 <footer>
   <div class="wrap">
     <div style="display:flex;align-items:center;gap:18px"><img src="/logo.png?v=6" alt="SLP Digital" width="62" height="38"><span>SLP Digital, une marque du groupe SLP<br>Sites internet et espaces privés</span></div>
-    <div><a href="mailto:contact@slpdigital.fr">contact@slpdigital.fr</a> · <a href="/mentions-legales">Mentions légales</a></div>
+    <div><a href="mailto:contact@slpdigital.fr">contact@slpdigital.fr</a> · <a href="/conditions-de-vente">Conditions de vente</a> · <a href="/mentions-legales">Mentions légales</a></div>
   </div>
 </footer>
 
@@ -705,8 +705,8 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     b.addEventListener('click', function(){ PAY = b.dataset.pay; renderPay(); });
   });
 
-  /* Paiement en ligne (Stripe). Passer à true quand les conditions générales de vente sont publiées. ?paiement=1 permet de le tester. */
-  var PAIEMENT_EN_LIGNE = false;
+  /* Paiement en ligne (Stripe). Mettre à false pour masquer le bouton de paiement. */
+  var PAIEMENT_EN_LIGNE = true;
   try { if (/[?&]paiement=1/.test(location.search)) PAIEMENT_EN_LIGNE = true; } catch (e) {}
   var PAYLINKS = {
     'Vitrine': {'24': 'https://buy.stripe.com/8x24gz1PCf845dfdOK83C00', '12': 'https://buy.stripe.com/bJe14neCo0da35711Y83C01', 'cash': 'https://buy.stripe.com/eVq14neCo1hegVXdOK83C02'},
