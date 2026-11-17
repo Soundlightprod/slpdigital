@@ -173,6 +173,7 @@ section.s{padding:104px 0}
 .field.chk label{display:flex;gap:11px;align-items:flex-start;font-weight:500;font-size:.93rem;color:var(--doux)}
 .field.chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--cta)}
 .field[hidden]{display:none}
+.paynext{display:none;gap:10px;margin-top:4px}.paynext.show{display:grid}.paynext p{color:var(--doux);font-size:.93rem}
 /* Formules */
 .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;perspective:1400px;align-items:stretch}
 .plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #DCDAF0;border-radius:22px;padding:34px 30px;transform-style:preserve-3d;transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .2s ease-out,box-shadow .25s;box-shadow:0 20px 50px -30px rgba(14,16,32,.25)}
@@ -578,9 +579,10 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       <div class="recap" id="recap" aria-live="polite"></div>
       <div class="field" id="fDom" hidden><label for="domaine">Nom de domaine souhaité <span class="opt">(facultatif)</span></label><input id="domaine" name="domaine" type="text" maxlength="120" placeholder="exemple : monentreprise.fr"></div>
       <div class="field"><label for="message">Votre projet</label><textarea id="message" name="message" required maxlength="4000" aria-describedby="e-message" placeholder="Votre activité, ce que vous attendez du site, votre échéance éventuelle…"></textarea><div class="err" id="e-message" role="alert"></div></div>
-      <div class="field chk" id="fOk" hidden><label for="accord"><input id="accord" name="accord" type="checkbox"><span>Je comprends que cette offre est un abonnement avec engagement. Les conditions détaillées me sont envoyées avec le contrat, et aucun paiement n’est demandé avant ma validation.</span></label><div class="err" id="e-accord" role="alert"></div></div>
+      <div class="field chk" id="fOk" hidden><label for="accord"><input id="accord" name="accord" type="checkbox"><span>Je comprends que cette offre est un abonnement avec engagement. Les conditions de vente me sont communiquées avant tout paiement, et aucun paiement n’est demandé avant ma validation.</span></label><div class="err" id="e-accord" role="alert"></div></div>
       <div class="hp" aria-hidden="true"><label for="site_web">Ne pas remplir</label><input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="status" id="status" role="status" aria-live="polite"></div>
+      <div class="paynext" id="payNext"></div>
       <button type="submit" id="go" class="btn btn-go">Envoyer ma demande</button>
       <p class="legal">Vos données servent uniquement à répondre à votre demande. Aucune inscription à une newsletter. Voir les <a href="/mentions-legales">mentions légales</a>.</p>
     </form>
@@ -703,6 +705,23 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     b.addEventListener('click', function(){ PAY = b.dataset.pay; renderPay(); });
   });
 
+  /* Paiement en ligne (Stripe). Passer à true quand les conditions générales de vente sont publiées. ?paiement=1 permet de le tester. */
+  var PAIEMENT_EN_LIGNE = false;
+  try { if (/[?&]paiement=1/.test(location.search)) PAIEMENT_EN_LIGNE = true; } catch (e) {}
+  var PAYLINKS = {
+    'Vitrine': {'24': 'https://buy.stripe.com/8x24gz1PCf845dfdOK83C00', '12': 'https://buy.stripe.com/bJe14neCo0da35711Y83C01', 'cash': 'https://buy.stripe.com/eVq14neCo1hegVXdOK83C02'},
+    'Agenda et réservations': {'24': 'https://buy.stripe.com/bJe5kD79WbVSfRT6mi83C03', '12': 'https://buy.stripe.com/dRm8wPgKw7FC5dfaCy83C04', 'cash': 'https://buy.stripe.com/5kQ28ram86By49bcKG83C05'},
+    'Boutique en ligne': {'24': 'https://buy.stripe.com/28E14ngKwf84eNPaCy83C06', '12': 'https://buy.stripe.com/00w14n0Ly9NKgVX26283C07', 'cash': 'https://buy.stripe.com/8x27sLgKw1he6hj11Y83C08'}
+  };
+  function showPayNext(sj, md){
+    var box = document.getElementById('payNext'); box.innerHTML = '';
+    var url = PAIEMENT_EN_LIGNE && PAYLINKS[sj] && PAYLINKS[sj][md];
+    if (!url) { box.classList.remove('show'); return; }
+    var p = document.createElement('p'); p.textContent = 'Pour valider votre abonnement, réglez en ligne en toute sécurité. L’engagement démarre à cette validation.';
+    var a = document.createElement('a'); a.className = 'btn btn-go'; a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Valider mon abonnement et payer';
+    box.appendChild(p); box.appendChild(a); box.classList.add('show');
+  }
+
   /* Commande : même formulaire, avec récapitulatif et accord */
   var PRICED = {'Vitrine': 5990, 'Agenda et réservations': 7990, 'Boutique en ligne': 8999};
   var MODE_TXT = {'24': 'en mensualités, engagement de 24 mois', '12': 'en mensualités, engagement de 12 mois', 'cash': 'comptant pour 24 mois'};
@@ -752,19 +771,19 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
     if (f.telephone.value.replace(/\D/g,'').length < 6) bad('telephone', 'Indiquez un numéro de téléphone.');
     if (!f.sujet.value) bad('sujet', 'Choisissez une offre, ou « Je ne sais pas encore ».');
     if (f.message.value.trim().length < 10) bad('message', 'Décrivez votre projet en quelques mots.');
-    setErr('accord',''); if (f.mode.value && f.sujet.value in PRICED && !f.accord.checked) bad('accord', 'Cochez la case pour confirmer votre commande.');
+    setErr('accord',''); if (f.elements['mode'].value && f.sujet.value in PRICED && !f.elements['accord'].checked) bad('accord', 'Cochez la case pour confirmer votre commande.');
     if (first) first.focus();
     return ok;
   }
   f.addEventListener('submit', function(ev){
     ev.preventDefault();
     if (sending || !validate()) return;
-    sending = true; go.disabled = true; st2.className = 'status';
+    sending = true; go.disabled = true; st2.className = 'status'; document.getElementById('payNext').classList.remove('show');
     fetch('https://soundlightprod.fr/api/contact', {
       method: 'POST', headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(Object.assign({
         nom: f.nom.value.trim(), email: f.email.value.trim(), telephone: f.telephone.value.trim(), organisme: f.organisme.value.trim(),
-        sujet: f.sujet.value, message: (function(){ var t = f.message.value.trim(), r = recapText().replace(/<[^>]+>/g, ''); if (!r) return t; return '[COMMANDE] ' + r + (f.domaine.value.trim() ? ' Nom de domaine souhaité : ' + f.domaine.value.trim() + '.' : '') + '\n\n' + t; })(), site_web: f.site_web.value, cle: cle, session_id: sid,
+        sujet: f.sujet.value, message: (function(){ var t = f.message.value.trim(), r = recapText().replace(/<[^>]+>/g, ''); if (!r) return t; return '[COMMANDE] ' + r + (f.elements['domaine'].value.trim() ? ' Nom de domaine souhaité : ' + f.elements['domaine'].value.trim() + '.' : '') + '\n\n' + t; })(), site_web: f.site_web.value, cle: cle, session_id: sid,
         page: '/contact-digital', site: 'digital', lang: 'fr',
         dt: window.slpAS ? window.slpAS.dt() : Math.round(performance.now()), cf_token: window.slpAS ? window.slpAS.token() : ''
       }, window.slpAS ? window.slpAS.captcha() : {}))
@@ -772,7 +791,7 @@ footer a{color:var(--doux)}footer a:hover{color:#fff}
       .then(function(x){
         if (x.d && x.d.ok) {
           show('ok', 'Merci, votre demande est bien enregistrée' + (x.d.reference ? ' (référence ' + x.d.reference + ')' : '') + '. Nous vous répondons sous 24 h ouvrées.');
-          f.reset(); updateOrder(); cle = 'dg-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+          var _sj = f.sujet.value, _md = f.elements['mode'].value; f.reset(); updateOrder(); showPayNext(_sj, _md); cle = 'dg-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
         } else {
           if (window.slpAS) window.slpAS.captchaReset();
           if (x.d && x.d.champ && x.d.champ !== 'captcha') setErr(x.d.champ, x.d.error || '');
