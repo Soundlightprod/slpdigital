@@ -388,6 +388,25 @@ body{font-size:16px}
 .demo-go{position:absolute;left:0;right:0;top:36px;bottom:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:22px;background:linear-gradient(180deg,transparent 70%,rgba(10,8,32,.35));cursor:pointer;text-decoration:none}
 .demo-go span{background:var(--cta);color:#fff;font:700 .95rem var(--corps);padding:11px 22px;border-radius:30px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);opacity:0;transform:translateY(6px);transition:.2s}
 .demo-frame:hover .demo-go span,.demo-go:focus-visible span{opacity:1;transform:none}
+.demo-view{position:relative;overflow:hidden;background:#fff}
+.demo-frame:not(.mobile){width:min(100%,max(640px,calc((100vh - 430px) * 1.78)));margin-left:auto;margin-right:auto}
+.demo-frame iframe{transform-origin:0 0;height:640px}
+.collage{position:relative;height:600px;animation:rise .9s .1s both}
+.collage figure{position:absolute;margin:0;border-radius:22px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08);background:var(--scene)}
+.collage img{width:100%;height:100%;object-fit:cover;display:block}
+.collage .c1{right:0;top:0;width:62%;height:460px}
+.collage .c2{left:0;top:96px;width:34%;height:300px}
+.collage .c3{right:12%;bottom:0;width:48%;height:200px}
+.c-card{position:absolute;left:2%;bottom:34px;width:230px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 50px -20px rgba(0,0,0,.7);color:#17163A}
+.c-card .bar{display:flex;align-items:center;gap:5px;height:26px;padding:0 10px;background:#E8E7F5}
+.c-card .bar i{width:7px;height:7px;border-radius:50%;background:#FF6B6B}.c-card .bar i:nth-child(2){background:#FFC857}.c-card .bar i:nth-child(3){background:#52D18C}
+.c-card .bar b{margin-left:6px;flex:1;height:14px;border-radius:7px;background:#fff;font:600 8.5px/14px var(--corps);padding:0 8px;color:#555B80;white-space:nowrap;overflow:hidden}
+.c-body{padding:14px 14px 16px;display:grid;gap:4px}.c-body strong{font:800 1rem var(--titre)}.c-body span{font-size:.8rem;color:#59538F}
+.c-body u{text-decoration:none;justify-self:start;margin-top:8px;background:var(--cta);color:#fff;font:700 .78rem var(--corps);padding:7px 12px;border-radius:8px}
+.c-chip{position:absolute;right:-4px;top:380px;display:flex;align-items:center;gap:8px;background:#fff;color:#0E2A1F;font:700 .88rem var(--corps);padding:10px 16px;border-radius:30px;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+.c-chip svg{width:18px;height:18px;padding:3px;border-radius:50%;background:#1C9A6B;color:#fff}
+@media(max-width:980px){.collage{height:440px;max-width:560px;margin:10px auto 0}.collage .c1{height:340px}.collage .c2{top:70px;height:220px}.collage .c3{height:150px}.c-chip{top:290px}}
+@media(max-width:560px){.collage{height:380px}.collage .c1{height:290px}.collage .c2{height:190px}.collage .c3{display:none}.c-card{width:190px;bottom:20px}.c-chip{top:250px;font-size:.78rem}}
 </style>
 </head>
 <body>
@@ -425,28 +444,12 @@ body{font-size:16px}
       </ul>
     </div>
 
-    <div class="stage" id="stage" aria-hidden="true">
-      <div class="rig" id="rig">
-        <div class="floor"></div>
-        <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div>
-        <div class="win win-agenda">
-          <div class="bar"><i></i><i></i><i></i><b>studio-orea.fr/reserver</b></div>
-          <div class="m-cal"><h5>Réservez votre créneau</h5>
-            <div class="g"><span class="x">L</span><span class="x">M</span><span>M</span><span>J</span><span>V</span><span class="on">S</span><span class="x">D</span><span>12</span><span>13</span><span>14</span><span class="on">15</span><span>16</span><span>17</span><span class="x">18</span></div>
-            <div class="sl"><i>09:30</i><i class="p">10:15</i><i>11:00</i><i>14:00</i><i>15:30</i></div></div>
-        </div>
-        <div class="win win-main">
-          <div class="bar"><i></i><i></i><i></i><b>atelier-boissiere.fr</b></div>
-          <div class="m-nav"><strong>Atelier Boissière</strong><span><i></i><i></i><i></i></span></div>
-          <div class="m-hero"><h4>Menuiserie sur mesure dans les Vosges</h4><p>Cuisines, escaliers, agencements.</p><u>Demander un devis</u></div>
-          <div class="m-cards"><i></i><i></i><i></i></div>
-        </div>
-        <div class="win win-priv">
-          <div class="bar"><i></i><i></i><i></i><b>espace.veyrac-associes.fr</b></div>
-          <div class="m-priv"><aside><i></i><i></i><i></i><i></i></aside><div><b>Bonjour Claire</b><span>Agenda de l’équipe</span><span>Documents partagés</span><span class="l">Administration</span></div></div>
-        </div>
-        <div class="phone"><div class="scr"><div class="ph-top">Atelier<br>Boissière</div><div class="ph-row"><i></i><i></i></div><div class="ph-btn">Demander un devis</div></div></div>
-      </div>
+    <div class="collage">
+      <figure class="c1"><img src="https://images.unsplash.com/photo-1687422810663-c316494f725a?auto=format&fit=crop&q=72&w=720&h=900" width="720" height="900" alt="Un artisan menuisier souriant dans son atelier" fetchpriority="high"></figure>
+      <figure class="c2"><img src="https://images.unsplash.com/photo-1761839256840-7780a45b85dc?auto=format&fit=crop&q=72&w=440&h=540" width="440" height="540" alt="La responsable d’un salon de coiffure dans ses locaux" fetchpriority="high"></figure>
+      <figure class="c3"><img src="https://images.unsplash.com/photo-1753351052617-62818ffc9173?auto=format&fit=crop&q=72&w=480&h=360" width="480" height="360" alt="Deux commerçants posant dans leur boutique" fetchpriority="high"></figure>
+      <div class="c-card"><div class="bar"><i></i><i></i><i></i><b>atelier-boissiere.fr</b></div><div class="c-body"><strong>Atelier Boissière</strong><span>Menuiserie sur mesure</span><u>Demander un devis</u></div></div>
+      <div class="c-chip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Rendez-vous confirmé</div>
     </div>
   </div>
 </section>
@@ -638,7 +641,7 @@ body{font-size:16px}
     <div class="demo-stage" id="demoStage">
       <div class="demo-frame" id="demoFrame" role="tabpanel" aria-labelledby="t-vitrine">
         <div class="bar"><i></i><i></i><i></i><b id="demoUrl">soundlightprod.fr</b></div>
-        <iframe id="demoIframe" title="Aperçu de l’exemple" loading="lazy" scrolling="no" tabindex="-1" src="about:blank"></iframe>
+        <div class="demo-view" id="demoView"><iframe id="demoIframe" title="Aperçu de l’exemple" loading="lazy" scrolling="no" tabindex="-1" src="about:blank"></iframe></div>
         <a class="demo-go" href="#" id="demoGo" aria-label="Ouvrir cet exemple en plein écran"><span>Ouvrir l’exemple</span></a>
       </div>
     </div>
@@ -777,6 +780,15 @@ body{font-size:16px}
   };
   var frame = document.getElementById('demoFrame'), ifr = document.getElementById('demoIframe');
   var tabs = [].slice.call(document.querySelectorAll('.demo-tabs button'));
+
+  function fitDemo(){
+    var v = document.getElementById('demoView'); if (!v) return;
+    if (frame.classList.contains('mobile')) { ifr.style.width = '100%'; ifr.style.height = '640px'; ifr.style.transform = 'none'; v.style.height = '640px'; return; }
+    var w = v.clientWidth, vw = 1440, vh = 810, sc = w / vw;
+    ifr.style.width = vw + 'px'; ifr.style.height = vh + 'px'; ifr.style.transform = 'scale(' + sc + ')'; v.style.height = Math.round(vh * sc) + 'px';
+  }
+  window.addEventListener('resize', fitDemo); fitDemo();
+  new MutationObserver(function(){ setTimeout(fitDemo, 420); }).observe(frame, {attributes:true, attributeFilter:['class']});
   function showDemo(k, scroll){
     var d = DEMOS[k]; if (!d) return;
     tabs.forEach(function(b){ b.setAttribute('aria-selected', b.dataset.demo === k ? 'true' : 'false'); });
