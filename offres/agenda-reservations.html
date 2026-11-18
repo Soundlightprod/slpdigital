@@ -17,20 +17,21 @@
 <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SLP Digital — Agenda & réservations", "serviceType": "Site avec agenda et réservations en ligne", "url": "https://slpdigital.fr/offres/agenda-reservations", "description": "Site avec agenda et réservations en ligne à partir de 79,90 € TTC par mois, hébergement et mises à jour inclus, sans frais de création.", "provider": {"@type": "ProfessionalService", "name": "SLP Digital", "url": "https://slpdigital.fr/"}, "areaServed": "FR", "offers": {"@type": "Offer", "price": "79.90", "priceCurrency": "EUR"}}</script>
-<link rel="stylesheet" href="/style.css?v=1">
+<link rel="stylesheet" href="/style.css?v=2">
 </head>
 <body>
 <a class="skip" href="#contact">Aller à la demande</a>
 <header class="top">
   <div class="wrap nav">
     <a class="brand" href="/" aria-label="SLP Digital, accueil"><img src="/logo.png?v=6" alt="SLP Digital" width="76" height="46"></a>
-    <nav aria-label="Navigation principale">
+    <nav id="mainnav" aria-label="Navigation principale">
       <a href="/#methode">Méthode</a>
       <a href="/#formules">Offres</a>
       <a href="/#exemples">Réalisations</a>
       <a href="/#questions">Questions</a>
       <a class="btn btn-go" href="/#contact">Devis gratuit</a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <main id="top">
@@ -83,5 +84,6 @@
   <div><a href="/">Accueil</a> · <a href="/conditions-de-vente">Conditions de vente</a> · <a href="/mentions-legales">Mentions légales</a></div>
 </div></footer>
 <script src="/suivi.js" data-page="offre-agenda-reservations" defer></script>
+<script src="/menu.js" defer></script>
 </body>
 </html>
