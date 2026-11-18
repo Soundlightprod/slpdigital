@@ -70,6 +70,9 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,8,32,.84);backdro
 .hero h1{font-size:clamp(2.3rem,4.3vw,3.7rem);font-weight:800;letter-spacing:-.035em}
 .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--ambre),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lead{margin-top:22px;font-size:1.2rem;color:var(--doux);max-width:34em}
+.hero .appel{margin-top:16px;font-size:.98rem;color:var(--doux);max-width:36em}.hero .appel strong{color:var(--texte)}
+.demo-tabs small{display:block;font-size:.72rem;font-weight:600;letter-spacing:.04em;opacity:.8;text-transform:uppercase}
+.contact .paths{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 4px}
 .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .ticks{display:grid;grid-template-columns:repeat(2,auto);gap:10px 26px;margin-top:34px;list-style:none;justify-content:start;font-weight:600;font-size:.97rem}
 .ticks li{display:flex;align-items:center;gap:10px}
@@ -451,7 +454,7 @@ section.s{padding:clamp(64px,8vw,116px) 0;position:relative}
     <nav aria-label="Navigation principale">
       <a href="#methode">Méthode</a>
       <a href="#formules">Offres</a>
-      <a href="#exemples">Exemples à tester</a>
+      <a href="#exemples">Réalisations</a>
       <a href="#questions">Questions</a>
       <a class="btn btn-go" href="#contact">Devis gratuit</a>
     </nav>
@@ -463,11 +466,12 @@ section.s{padding:clamp(64px,8vw,116px) 0;position:relative}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>Votre site professionnel, créé et entretenu pour <em>59,90&nbsp;€ par mois.</em></h1>
-      <p class="lead">Sans frais de création, sans technique à gérer. Nous concevons, hébergeons et mettons à jour votre site : vous gardez votre métier, nous nous occupons de votre présence en ligne.</p>
+      <h1>Votre entreprise mérite <em>un site qui fait la différence.</em></h1>
+      <p class="lead">Un site professionnel conçu pour vous, hébergé et entretenu par nos soins. Sans frais de création.</p>
+      <p class="appel"><strong>À partir de 59,90&nbsp;€ TTC par mois</strong> (offre Vitrine), engagement de 24 mois, reconduction par périodes de 12 mois, préavis de 2 mois. Options sur devis.</p>
       <div class="actions">
-        <a class="btn btn-go" href="#contact">Demander mon devis gratuit</a>
-        <a class="btn btn-ghost" href="#exemples">Tester des exemples de sites</a>
+        <a class="btn btn-go" href="#formules">CRÉER MON SITE</a>
+        <a class="btn btn-ghost" href="#exemples">DÉCOUVRIR NOS RÉALISATIONS</a>
       </div>
       <ul class="ticks">
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>Aucun frais de création</li>
@@ -678,14 +682,14 @@ section.s{padding:clamp(64px,8vw,116px) 0;position:relative}
 <section class="s s-scene" id="exemples">
   <div class="wrap">
     <div class="s-head">
-      <h2>Testez-les en grandeur nature</h2>
-      <p>Nos propres sites, un exemple de réservation et un espace privé avec ses niveaux de droits. Cliquez sur l’aperçu pour l’ouvrir en plein écran et tout tester : rien n’est simulé.</p>
+      <h2>Nos réalisations et démonstrations</h2>
+      <p>Deux sites réels (Sound Light Prod et SLP Store) et deux démonstrations fictives (réservation et espace privé), clairement identifiés. Cliquez sur l’aperçu pour l’ouvrir en plein écran et le tester.</p>
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Exemples de sites">
-      <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine</button>
-      <button role="tab" id="t-agenda" aria-selected="false" aria-controls="demoFrame" data-demo="agenda">Agenda &amp; réservations</button>
-      <button role="tab" id="t-boutique" aria-selected="false" aria-controls="demoFrame" data-demo="boutique">Boutique en ligne</button>
-      <button role="tab" id="t-espace-prive" aria-selected="false" aria-controls="demoFrame" data-demo="espace-prive">Espace privé</button>
+      <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine <small>site réel</small></button>
+      <button role="tab" id="t-agenda" aria-selected="false" aria-controls="demoFrame" data-demo="agenda">Agenda &amp; réservations <small>démo fictive</small></button>
+      <button role="tab" id="t-boutique" aria-selected="false" aria-controls="demoFrame" data-demo="boutique">Boutique en ligne <small>site réel</small></button>
+      <button role="tab" id="t-espace-prive" aria-selected="false" aria-controls="demoFrame" data-demo="espace-prive">Espace privé <small>démo fictive</small></button>
     </div>
     <div class="demo-stage" id="demoStage">
       <div class="demo-frame" id="demoFrame" role="tabpanel" aria-labelledby="t-vitrine">
@@ -729,6 +733,7 @@ section.s{padding:clamp(64px,8vw,116px) 0;position:relative}
     <div>
       <h2>Parlons de votre projet</h2>
       <p class="lead">Décrivez votre activité en quelques lignes. Vous recevez une proposition adaptée, gratuitement et sans engagement.</p>
+      <div class="paths"><a class="btn btn-go" href="#f">Je souhaite un devis rapide</a><a class="btn btn-ghost" href="#formules">Je souhaite choisir une offre</a></div>
       <div class="direct">
         <a href="mailto:contact@slpdigital.fr" data-contact="mail"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>contact@slpdigital.fr</a>
         <a href="tel:+33631949653" data-contact="appel"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></span>06&nbsp;31&nbsp;94&nbsp;96&nbsp;53</a>
