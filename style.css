@@ -474,3 +474,17 @@ footer{background:#14161A;border-top:0;color:#B9BCC6}footer a{color:#B9BCC6}
 .s-nuit .lead,.s-scene .lead{color:#C4C7D0}
 @media(min-width:561px){.stage .rig{inset:0 6% 0 10%;scale:.9}}
 @media(max-width:560px){.stage .rig{left:-2%;right:-2%}}
+
+/* ===== Menu mobile ===== */
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--trait);border-radius:12px;background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
+.menu-btn span{display:block;width:20px;height:2px;background:#1E2024;border-radius:2px;transition:transform .2s,opacity .2s}
+@media(max-width:860px){
+.menu-btn{display:flex}
+.nav nav{margin-left:auto}
+.nav.open nav{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 20px;background:#F6F4EF;border-bottom:1px solid var(--trait);box-shadow:0 20px 30px -20px rgba(30,32,36,.3)}
+.nav.open nav a:not(.btn){display:block;padding:14px 0;border-bottom:1px solid var(--trait);color:#1E2024;font-size:1.05rem}
+.nav.open nav a.btn{margin-top:14px;text-align:center}
+.nav.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.open .menu-btn span:nth-child(2){opacity:0}
+.nav.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}

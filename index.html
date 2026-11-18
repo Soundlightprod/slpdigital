@@ -17,7 +17,7 @@
 <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"SLP Digital","url":"https://slpdigital.fr/","email":"contact@slpdigital.fr","telephone":"+33631949653","description":"Création, hébergement et entretien de sites internet et d'espaces privés par abonnement mensuel.","areaServed":"FR","parentOrganization":{"@type":"Organization","name":"Groupe SLP"},"makesOffer":[{"@type":"Offer","name":"Vitrine","price":"59.90","priceCurrency":"EUR"},{"@type":"Offer","name":"Agenda et réservations","price":"79.90","priceCurrency":"EUR"},{"@type":"Offer","name":"Espace privé","description":"Sur devis"},{"@type":"Offer","name":"Boutique en ligne","price":"89.99","priceCurrency":"EUR"}]}</script>
-<link rel="stylesheet" href="/style.css?v=1">
+<link rel="stylesheet" href="/style.css?v=2">
 
 </head>
 <body>
@@ -26,13 +26,14 @@
 <header class="top">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="SLP Digital, accueil"><img src="/logo.png?v=6" alt="SLP Digital" width="76" height="46"></a>
-    <nav aria-label="Navigation principale">
+    <nav id="mainnav" aria-label="Navigation principale">
       <a href="#methode">Méthode</a>
       <a href="#formules">Offres</a>
       <a href="#exemples">Réalisations</a>
       <a href="#questions">Questions</a>
       <a class="btn btn-go" href="#contact">Devis gratuit</a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -606,5 +607,6 @@ els.forEach(function(e){io.observe(e)});
 setTimeout(function(){els.forEach(function(e){e.classList.add('pm-in')})},4000);
 })();
 </script>
+<script src="/menu.js" defer></script>
 </body>
 </html>
