@@ -488,3 +488,13 @@ footer{background:#14161A;border-top:0;color:#B9BCC6}footer a{color:#B9BCC6}
 .nav.open .menu-btn span:nth-child(2){opacity:0}
 .nav.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
+
+/* ===== Héros mobile : aperçus lisibles ===== */
+.stage-m{display:none}
+@media(max-width:700px){
+.stage{display:none}
+.stage-m{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 24px 28px;margin:0 -24px;-webkit-overflow-scrolling:touch}
+.stage-m figure{flex:0 0 68%;scroll-snap-align:center;margin:0;background:#1E2024;border-radius:26px;padding:10px;box-shadow:0 30px 50px -30px rgba(30,32,36,.55)}
+.stage-m img{display:block;width:100%;height:auto;border-radius:18px}
+.stage-m figcaption{color:#E4E6EC;font-size:.85rem;font-weight:600;text-align:center;padding:10px 0 4px}
+}
