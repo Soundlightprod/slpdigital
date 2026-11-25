@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Atelier Lumebois (exemple de démonstration)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/demo/essentiel/style.css">
+</head>
+<body>
+<div class="demo-bar"><span>Démonstration fictive · offre Essentiel, site de 3 pages</span><a href="/offres/essentiel" target="_top">← Retour à SLP Digital</a></div>
+<header><div class="wrap"><a class="logo" href="/demo/essentiel/">Atelier <i>Lumebois</i></a><nav aria-label="Pages du site"><a href="/demo/essentiel/">Accueil</a><a href="/demo/essentiel/prestations">Prestations</a><a href="/demo/essentiel/contact" aria-current="page">Contact</a></nav></div></header>
+<main>
+<div class="hero petit"><div class="wrap"><h1>Contactez l’atelier</h1></div></div>
+<section><div class="wrap duo"><form class="card" id="f"><label>Votre nom<input required autocomplete="off"></label><label>Votre e-mail<input type="email" required autocomplete="off"></label><label>Votre projet<textarea rows="5" required></textarea></label><button class="btn" type="submit" style="margin-top:0">Envoyer ma demande</button><p id="ok" role="status" hidden>Démonstration : sur un vrai site, votre demande serait envoyée à l’artisan. Ici, rien n’est transmis ni enregistré.</p></form>
+<aside class="card"><h3>Coordonnées</h3><p>Téléphone : 05 36 49 00 00<br>E-mail : contact@atelier-lumebois.example</p><h3 style="margin-top:18px">Horaires</h3><p>Du lundi au vendredi<br>8 h – 12 h · 14 h – 18 h</p></aside></div></section>
+<script>document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();this.reset();document.getElementById('ok').hidden=false;});</script>
+</main>
+<footer><div class="wrap">Atelier Lumebois, menuiserie artisanale. Entreprise fictive créée pour la démonstration.</div></footer>
+</body>
+</html>
