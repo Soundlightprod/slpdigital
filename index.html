@@ -196,7 +196,7 @@
         </ul>
         <div class="acts">
           <a class="btn btn-dark" href="#contact" data-formule="Essentiel" data-commande="1">Commander l’Essentiel</a>
-          <a class="btn btn-line" href="#exemples" data-demo="vitrine">Tester l’exemple</a>
+          <a class="btn btn-line" href="#exemples" data-demo="essentiel">Tester l’exemple</a>
         </div>
         <p class="of-more"><a href="/offres/essentiel">Voir le détail de cette offre →</a></p>
       </article>
@@ -287,9 +287,10 @@
   <div class="wrap">
     <div class="s-head">
       <h2>Nos réalisations et démonstrations</h2>
-      <p>Deux sites réels (Auberge Jolibois et SLP Store) et deux démonstrations fictives (réservation et espace privé), clairement identifiés. Cliquez sur l’aperçu pour l’ouvrir en plein écran et le tester.</p>
+      <p>Deux sites réels (Auberge Jolibois et SLP Store) et trois démonstrations fictives (site Essentiel, réservation et espace privé), clairement identifiés. Cliquez sur l’aperçu pour l’ouvrir en plein écran et le tester.</p>
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Exemples de sites">
+      <button role="tab" id="t-essentiel" aria-selected="false" aria-controls="demoFrame" data-demo="essentiel">Essentiel <small>démo fictive</small></button>
       <button role="tab" id="t-vitrine" aria-selected="true" aria-controls="demoFrame" data-demo="vitrine">Vitrine <small>site réel</small></button>
       <button role="tab" id="t-agenda" aria-selected="false" aria-controls="demoFrame" data-demo="agenda">Agenda &amp; réservations <small>démo fictive</small></button>
       <button role="tab" id="t-boutique" aria-selected="false" aria-controls="demoFrame" data-demo="boutique">Boutique en ligne <small>site réel</small></button>
@@ -432,6 +433,7 @@
 
   /* Exemples */
   var DEMOS = {
+    'essentiel': { url: 'atelier-lumebois.example', href: '/demo/essentiel/', open: '/demo/essentiel/', ext: false, formule: 'Essentiel', text: 'Exemple fictif : un menuisier avec un site de trois pages (accueil, prestations, contact). Ce que permet l’offre Essentiel.' },
     'vitrine': { url: 'aubergejolibois.fr', href: 'https://www.aubergejolibois.fr/?notrack=1', open: 'https://www.aubergejolibois.fr/', ext: true, formule: 'Vitrine', text: 'Auberge Jolibois, restaurant en Dordogne : menus, carte, horaires, téléphone et photos. Un site vitrine réel, réalisé pour un restaurateur.' },
     'agenda': { url: 'studio-orea.fr', href: '/demo/agenda/', open: '/demo/agenda/', ext: false, formule: 'Agenda et réservations', text: 'Exemple fictif : un salon de coiffure où le client choisit sa prestation, son jour et son créneau, puis reçoit sa confirmation. Essayez une réservation.' },
     'boutique': { url: 'slpstore.fr', href: 'https://slpstore.fr/?notrack=1', open: 'https://slpstore.fr/', ext: true, formule: 'Boutique en ligne', text: 'SLP Store, notre boutique en ligne : catalogue, panier et paiement sécurisé. Exactement ce que propose la formule Boutique en ligne.' },
