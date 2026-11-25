@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veyrac &amp; Associés — Team area (demo)</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{--marine:#16294A;--marine2:#21386B;--menthe:#3FD0A0;--fond:#F1F4F9;--encre:#142038;--doux:#62708A;--ligne:#DCE2EE;--alerte:#C2304F;--sans:"Segoe UI",system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--fond);color:var(--encre);line-height:1.5;font-size:15.5px;overflow-x:hidden}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--menthe);outline-offset:2px}
+.demo-bar{position:sticky;top:0;z-index:90;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;justify-content:space-between;background:#0A0820;color:#E8EAF7;font:600 13px/1.3 var(--sans);padding:9px 18px}
+.demo-bar a{color:#A99CF0;text-decoration:none;font-weight:800}
+.hide{display:none!important}
+/* connexion */
+.login{min-height:calc(100vh - 38px);display:grid;grid-template-columns:1fr 1fr}
+.login .vis{background:linear-gradient(160deg,rgba(22,41,74,.93),rgba(33,56,107,.82)),url(https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?auto=format&fit=crop&w=1400&q=72) center/cover;color:#fff;padding:60px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.logo{font:800 1.35rem var(--sans);letter-spacing:-.01em}.logo i{font-style:normal;color:var(--menthe)}
+.vis h1{font:800 clamp(1.8rem,3.4vw,2.6rem)/1.1 var(--sans);letter-spacing:-.02em;max-width:12em}
+.vis p{opacity:.8;margin-top:14px;max-width:26em}
+.vis small{opacity:.6}
+.login .pan{padding:48px;display:flex;flex-direction:column;justify-content:center;max-width:520px;width:100%;margin:0 auto}
+.pan h2{font:800 1.6rem var(--sans);margin-bottom:6px}
+.pan .sub{color:var(--doux);margin-bottom:24px}
+label{display:block;font-weight:700;font-size:.88rem;margin:14px 0 5px}
+input,select,textarea{width:100%;font:inherit;padding:12px 13px;border:1.5px solid var(--ligne);border-radius:10px;background:#fff;color:var(--encre)}
+textarea{min-height:76px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--marine2);box-shadow:0 0 0 4px rgba(33,56,107,.15)}
+input[aria-invalid=true]{border-color:var(--alerte)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;font:800 .98rem var(--sans);background:var(--marine);color:#fff;border:0;border-radius:10px;padding:13px 20px;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--marine2)}
+.btn.full{display:flex;width:100%;margin-top:20px;padding:15px}
+.btn.alt{background:#fff;color:var(--marine);box-shadow:inset 0 0 0 1.5px var(--ligne)}.btn.alt:hover{background:#F4F6FB}
+.btn.go{background:#0E9F77}.btn.go:hover{background:#0B8765}
+.btn.sm{padding:9px 14px;font-size:.88rem}
+.err{color:var(--alerte);font-weight:600;margin-top:12px;min-height:1.4em;font-size:.92rem}
+.demo-accounts{margin-top:26px;border-top:1px dashed var(--ligne);padding-top:20px}
+.demo-accounts h3{font-size:.86rem;color:var(--doux);font-weight:700;margin-bottom:10px}
+.acc{display:grid;gap:8px}
+.acc button{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:#fff;border:1.5px solid var(--ligne);border-radius:10px;padding:11px 14px;cursor:pointer;transition:.15s}
+.acc button:hover{border-color:var(--marine2);background:#F8FAFD}
+.acc b{display:block;font-size:.95rem}.acc small{color:var(--doux)}
+.acc em{font-style:normal;font-weight:800;font-size:.76rem;padding:4px 10px;border-radius:20px;background:#E4EAF6;color:var(--marine)}
+@media(max-width:820px){.login{grid-template-columns:1fr}.login .vis{padding:32px 26px}.login .pan{padding:32px 24px}}
+/* application */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:calc(100vh - 38px)}
+aside.sb{background:var(--marine);color:#fff;padding:22px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:38px;height:calc(100vh - 38px);overflow:auto}
+.sb .logo{padding:0 10px 18px}
+.sb button.nv{display:flex;align-items:center;gap:11px;width:100%;font:600 .95rem var(--sans);color:#C7D2EA;background:transparent;border:0;border-radius:9px;padding:11px 12px;cursor:pointer;text-align:left}
+.sb button.nv:hover{background:rgba(255,255,255,.08);color:#fff}
+.sb button.nv[aria-current=page]{background:rgba(63,208,160,.16);color:#fff}
+.sb button.nv svg{width:19px;height:19px;flex:none}
+.sb .cnt{margin-left:auto;background:#FF6B8A;color:#fff;font:800 .72rem var(--sans);min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 6px}
+.sb .me{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding:16px 10px 0;font-size:.88rem}
+.sb .me b{display:block}.sb .me span{opacity:.7}
+.sb .out{margin-top:10px;font:700 .85rem var(--sans);color:var(--menthe);background:none;border:0;cursor:pointer;padding:0}
+main.mn{padding:30px 34px 70px;max-width:1040px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.mn h1{font:800 1.7rem var(--sans);letter-spacing:-.02em}
+.mn .lead{color:var(--doux);margin-top:4px}
+.role{display:inline-block;font-weight:800;font-size:.78rem;padding:4px 11px;border-radius:20px;background:var(--menthe);color:#06382A;margin-left:10px;vertical-align:middle}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px}
+.kpi{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:18px}
+.kpi b{display:block;font:800 1.9rem var(--sans);color:var(--marine)}.kpi span{color:var(--doux);font-size:.9rem}
+.banner{height:140px;border-radius:14px;margin-bottom:22px;background:linear-gradient(90deg,rgba(22,41,74,.85),rgba(22,41,74,.15)),url(https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=1200&q=72) center/cover;display:flex;align-items:flex-end;padding:18px 22px;color:#fff;font-weight:700}
+.panel{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:6px 0;margin-bottom:22px}
+.panel>h2{font:800 1.02rem var(--sans);padding:16px 20px 8px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 20px;border-top:1px solid var(--ligne)}
+.item>div:first-child{min-width:0}
+.item b{display:block;overflow-wrap:anywhere}.item small{color:var(--doux)}
+.item .act{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.item.new{background:#F2FBF7}
+.empty{padding:22px 20px;color:var(--doux)}
+.tag{font-weight:800;font-size:.74rem;padding:4px 10px;border-radius:20px;background:#E4EAF6;color:var(--marine);white-space:nowrap}
+.tag.rh{background:#FCE3EA;color:#8E1F3C}.tag.ok{background:#DDF6EC;color:#0B6B4B}.tag.vi{background:#EEEEFD;color:#3B3A9E}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+.chip{font-size:.74rem;font-weight:700;background:#EEF2F8;color:#33425F;border-radius:20px;padding:3px 9px}
+.dl{font:700 .85rem var(--sans);color:var(--marine2);border:1.5px solid var(--ligne);border-radius:8px;padding:7px 12px;background:#fff;cursor:pointer}
+.dl:hover{border-color:var(--marine2)}.dl.red{color:var(--alerte)}
+.fic{flex:none;width:40px;height:46px;border-radius:7px;background:#E4EAF6;color:var(--marine);font:800 .68rem var(--sans);display:grid;place-items:center;text-transform:uppercase}
+.fic.pdf{background:#FCE3EA;color:#8E1F3C}.fic.doc,.fic.docx{background:#E1ECFB;color:#1F4F9C}.fic.xls,.fic.xlsx,.fic.csv{background:#DDF6EC;color:#0B6B4B}
+.row2{display:flex;gap:14px;align-items:center}
+.lock{display:flex;gap:16px;align-items:center;background:#fff;border:1.5px dashed #C9A0AC;border-radius:14px;padding:26px}
+.lock svg{width:38px;height:38px;color:var(--alerte);flex:none}
+.lock h2{font:800 1.15rem var(--sans)}.lock p{color:var(--doux)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px 20px;border-top:1px solid var(--ligne);font-size:.95rem}
+th{color:var(--doux);font-size:.8rem;font-weight:700;border-top:0}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{font:700 .9rem var(--sans);border:1.5px solid var(--ligne);background:#fff;color:var(--doux);border-radius:20px;padding:8px 16px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--marine);border-color:var(--marine);color:#fff}
+/* agenda */
+.wk{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.wk b{font:800 1.05rem var(--sans);margin:0 6px}
+.wk .nav{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--ligne);background:#fff;font-size:1.1rem;cursor:pointer;color:var(--marine)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.day{background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:10px 8px;min-height:170px;display:flex;flex-direction:column;gap:6px}
+.day.tod{border-color:var(--marine2);box-shadow:0 0 0 2px rgba(33,56,107,.18)}
+.day h3{display:flex;justify-content:space-between;align-items:center;font:800 .8rem var(--sans);color:var(--doux);text-transform:capitalize}
+.day h3 b{font-size:1.05rem;color:var(--encre)}
+.day h3 button{border:0;background:#EEF2F8;color:var(--marine);border-radius:6px;width:22px;height:22px;cursor:pointer;font-weight:800;line-height:1}
+.ev{width:100%;text-align:left;font-size:.78rem;font-weight:700;border:0;border-left:4px solid var(--menthe);background:#EEF8F4;border-radius:6px;padding:6px 7px;cursor:pointer;overflow-wrap:anywhere}
+.ev small{display:block;font-weight:500;color:var(--doux)}
+.ev.client{border-color:#8E8CF0;background:#EEEEFD}.ev.direction{border-color:#F08CA6;background:#FDEEF2}.ev.rappel{border-color:#F0B05C;background:#FEF4E3}
+@media(max-width:900px){.week{grid-template-columns:1fr}.day{min-height:0}}
+/* modales */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(10,14,32,.55);display:flex;align-items:flex-start;justify-content:center;padding:24px 14px;overflow:auto}
+.md{background:#fff;border-radius:16px;width:100%;max-width:600px;padding:26px;box-shadow:0 40px 90px -20px rgba(0,0,0,.6);margin:auto}
+.md h2{font:800 1.35rem var(--sans);margin-bottom:4px}.md .sub{color:var(--doux);margin-bottom:6px;font-size:.92rem}
+.md .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.md .three{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+.md .btns{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.who label,.opt{display:flex;gap:10px;align-items:center;margin:0;font-weight:600;font-size:.92rem;background:#F4F6FB;border-radius:10px;padding:10px 12px;cursor:pointer}
+.who input,.opt input{width:auto}
+.opt{margin-top:10px;background:#F2FBF7;border:1.5px solid #BFE9D8}
+.opt small{display:block;font-weight:500;color:var(--doux)}
+.radio{display:grid;gap:8px;margin-top:6px}.radio label{display:flex;gap:10px;align-items:center;margin:0;font-weight:600;background:#F4F6FB;border-radius:10px;padding:10px 12px;cursor:pointer}.radio input{width:auto}
+.drop{margin-top:6px;border:2px dashed #B9C4DA;border-radius:12px;padding:22px;text-align:center;color:var(--doux);cursor:pointer;background:#F8FAFD}
+.drop:hover,.drop.on{border-color:var(--marine2);background:#EEF3FB}.drop b{color:var(--marine)}
+@media(max-width:560px){.md .two,.md .three,.who{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--marine);color:#fff;font-weight:600;padding:14px 20px;border-radius:12px;box-shadow:0 14px 40px -10px rgba(0,0,0,.5);z-index:120;max-width:92vw}
+.toast small{display:block;font-weight:500;opacity:.8;margin-top:2px}
+.mailp{margin-top:14px;border:1.5px solid var(--ligne);border-radius:12px;overflow:hidden;font-size:.9rem}
+.mailp .h{background:#F4F6FB;padding:9px 14px;color:var(--doux);font-size:.82rem}
+.mailp .b{padding:14px;display:grid;gap:5px}
+.note{margin-top:22px;font-size:.82rem;color:var(--doux)}
+@media(max-width:860px){.app{grid-template-columns:minmax(0,1fr)}aside.sb{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:12px;overflow:visible}.sb .logo{padding:0 10px 0 4px;width:100%}.sb .me{margin:0 0 0 auto;border:0;padding:0}.sb .me span{display:none}main.mn{padding:22px 16px 60px}.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="demo-bar"><span>Demo · fictional business · Private area plan</span><a href="/en/#exemples" target="_top">← Back to SLP Digital</a></div>
+
+<!-- CONNEXION -->
+<div class="login" id="login">
+  <div class="vis">
+    <div class="logo">Veyrac<i>&amp;</i>Associés</div>
+    <div><h1>The whole team’s workspace.</h1><p>Shared calendar, confidential documents and alerts, accessible only with your login.</p></div>
+    <small>Staff access only.</small>
+  </div>
+  <div class="pan">
+    <h2>Sign in</h2><p class="sub">Enter your login, or try one of the demo profiles.</p>
+    <form id="lf" novalidate>
+      <label for="u">Username</label><input id="u" autocomplete="username" autocapitalize="none">
+      <label for="p">Password</label><input id="p" type="password" autocomplete="current-password">
+      <div class="err" id="err" role="alert"></div>
+      <button class="btn full" type="submit">Sign in</button>
+    </form>
+    <div class="demo-accounts"><h3>Demo profiles: one click to sign in</h3><div class="acc" id="acc"></div>
+      <p class="note" style="margin-top:14px">Tip: create an appointment or share a document with a profile, then sign out and sign in as that profile to see the alert arrive.</p></div>
+  </div>
+</div>
+
+<!-- APPLICATION -->
+<div class="app hide" id="app">
+  <aside class="sb">
+    <div class="logo">Veyrac<i>&amp;</i>Associés</div>
+    <button class="nv" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg>Home</button>
+    <button class="nv" data-v="agenda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendar</button>
+    <button class="nv" data-v="docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>Documents</button>
+    <button class="nv" data-v="notifs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17V11a6 6 0 1112 0v6l2 2H4z"/><path d="M10 21a2 2 0 004 0"/></svg>Alerts<span class="cnt hide" id="cnt">0</span></button>
+    <button class="nv" data-v="admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5M17 11l2 2 3-4"/></svg>Administration</button>
+    <div class="me"><b id="meN"></b><span id="meR"></span><br><button class="out" id="out">Sign out</button></div>
+  </aside>
+  <main class="mn" id="mn"></main>
+</div>
+<div id="layer"></div>
+<div class="toast hide" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var USERS=[
+    {id:'claire',pw:'demo',nom:'Claire Veyrac',pre:'Claire',role:'Partner',lvl:3,desc:'Full access'},
+    {id:'thomas',pw:'demo',nom:'Thomas Lafon',pre:'Thomas',role:'Associate',lvl:2,desc:'Firm calendar and documents'},
+    {id:'lea',pw:'demo',nom:'Léa Marchand',pre:'Léa',role:'Intern',lvl:1,desc:'Calendar and documents shared with her'},
+    {id:'nadia',pw:'demo',nom:'Nadia Roux',pre:'Nadia',role:'Assistant',lvl:1,desc:'Calendar and documents shared with her'}
+  ];
+  var U=function(id){return USERS.filter(function(u){return u.id===id})[0]};
+  var JOURS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MOIS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function pad(n){return (n<10?'0':'')+n}
+  function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+  function parse(s){var a=s.split('-');return new Date(+a[0],+a[1]-1,+a[2])}
+  function fmtL(d){return JOURS[d.getDay()]+' '+d.getDate()+' '+MOIS[d.getMonth()]}
+  function mondayOf(d){var x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
+  var today=new Date();today.setHours(0,0,0,0);
+  function dayOff(n){var d=new Date(today);d.setDate(d.getDate()+n);return iso(d)}
+  var wkStart=mondayOf(today);
+
+  /* données de démonstration (en mémoire : elles se perdent au rechargement) */
+  var seq=100;
+  var EV=[
+    {id:1,t:'Team catch-up',d:dayOff(0),s:'09:00',e:'09:30',lieu:'Meeting room',type:'reunion',att:['claire','thomas','lea','nadia'],by:'claire',desc:'Weekly review.'},
+    {id:2,t:'Meeting with Mr Dubois',d:dayOff(1),s:'14:00',e:'15:00',lieu:'Office 2',type:'client',att:['claire','thomas'],by:'thomas',desc:'Accounts and tax return.'},
+    {id:3,t:'Garnier year-end close',d:dayOff(2),s:'10:30',e:'12:00',lieu:'Office',type:'client',att:['thomas','nadia'],by:'thomas',desc:''},
+    {id:4,t:'Annual reviews',d:dayOff(3),s:'09:30',e:'12:30',lieu:'Director’s office',type:'direction',att:['claire'],by:'claire',desc:'Management only.'},
+    {id:5,t:'Management committee',d:dayOff(4),s:'16:00',e:'17:30',lieu:'Director’s office',type:'direction',att:['claire'],by:'claire',desc:''},
+    {id:6,t:'VAT returns',d:dayOff(5),s:'09:00',e:'11:00',lieu:'Office',type:'rappel',att:['thomas','lea'],by:'thomas',desc:'Due on the 20th.'}
+  ];
+  var DOCS=[
+    {id:1,n:'Client onboarding procedure.pdf',cat:'Firm',by:'claire',sh:'all',date:dayOff(-12),size:'184 KB'},
+    {id:2,n:'Engagement letter template.docx',cat:'Templates',by:'claire',sh:'all',date:dayOff(-9),size:'62 KB'},
+    {id:3,n:'Tax deadline calendar.pdf',cat:'Firm',by:'thomas',sh:['claire','thomas','lea'],date:dayOff(-6),size:'412 KB'},
+    {id:4,n:'Current client files.xlsx',cat:'Clients',by:'thomas',sh:['claire','thomas'],date:dayOff(-3),size:'96 KB'},
+    {id:5,n:'2027 fee schedule.pdf',cat:'Management',by:'claire',sh:['claire'],date:dayOff(-2),size:'148 KB'},
+    {id:6,n:'Year review and goals.pdf',cat:'Management',by:'claire',sh:['claire'],date:dayOff(-1),size:'1.2 MB'}
+  ];
+  var NOT={claire:[],thomas:[],lea:[],nadia:[]};
+  var me=null,view='accueil',tab='tous';
+
+  /* droits : l'associée voit tout ; les autres voient ce qui les concerne */
+  function canSeeEv(e){return me.lvl===3||e.att.indexOf(me.id)>-1||e.by===me.id}
+  function canSeeDoc(d){return me.lvl===3||d.sh==='all'||d.by===me.id||(d.sh.indexOf&&d.sh.indexOf(me.id)>-1)}
+  function shareLabel(d){if(d.sh==='all')return ['Whole team'];if(d.sh.length===1&&d.sh[0]===d.by)return ['Only me'];return d.sh.map(function(i){return U(i).pre})}
+  function notify(to,txt,kind){to.forEach(function(id){if(id!==me.id)NOT[id].unshift({id:++seq,txt:txt,kind:kind,when:new Date(),read:false})})}
+  function unread(){return NOT[me.id].filter(function(n){return !n.read}).length}
+
+  /* connexion */
+  USERS.forEach(function(u){var b=document.createElement('button');b.type='button';b.innerHTML='<span><b>'+u.nom+'</b><small>'+u.desc+'</small></span><em>'+u.role+'</em>';b.onclick=function(){enter(u)};$('acc').appendChild(b)});
+  $('lf').addEventListener('submit',function(e){e.preventDefault();var id=$('u').value.trim().toLowerCase(),pw=$('p').value;var u=USERS.filter(function(x){return x.id===id&&x.pw===pw})[0];if(!u){$('err').textContent='Wrong username or password. Try one of the demo profiles below.';return}enter(u)});
+  function enter(u){me=u;$('login').classList.add('hide');$('app').classList.remove('hide');$('meN').textContent=u.nom;$('meR').textContent=u.role;view='accueil';tab='tous';nav();window.scrollTo(0,0)}
+  $('out').onclick=function(){me=null;closeM();$('app').classList.add('hide');$('login').classList.remove('hide');$('lf').reset();$('err').textContent=''};
+  [].forEach.call(document.querySelectorAll('.nv'),function(b){b.onclick=function(){view=b.dataset.v;nav()}});
+  var tt;function toast(t,s){var e=$('toast');e.innerHTML=esc(t)+(s?'<small>'+esc(s)+'</small>':'');e.classList.remove('hide');clearTimeout(tt);tt=setTimeout(function(){e.classList.add('hide')},4200)}
+  function closeM(){$('layer').innerHTML=''}
+  function modal(html){$('layer').innerHTML='<div class="ov" id="ov"><div class="md" role="dialog" aria-modal="true">'+html+'</div></div>';$('ov').addEventListener('mousedown',function(e){if(e.target.id==='ov')closeM()})}
+
+  function nav(){
+    [].forEach.call(document.querySelectorAll('.nv'),function(b){if(b.dataset.v===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+    var n=unread(),c=$('cnt');c.textContent=n;c.classList.toggle('hide',!n);
+    var head=function(t,s,btn){return '<div class="top"><div><h1>'+t+'<span class="role">'+me.role+'</span></h1><p class="lead">'+s+'</p></div>'+(btn||'')+'</div>'};
+    var h='';
+    if(view==='accueil'){
+      var evs=EV.filter(canSeeEv).filter(function(e){return e.d>=iso(today)}).sort(function(a,b){return (a.d+a.s)<(b.d+b.s)?-1:1}).slice(0,4);
+      var ds=DOCS.filter(canSeeDoc);
+      h=head('Hello '+me.pre,'Here is what concerns you.')+'<div class="banner">Veyrac &amp; Associés ·  '+me.role+'</div>'+
+      '<div class="grid"><div class="kpi"><b>'+EV.filter(canSeeEv).length+'</b><span>appointments in the calendar</span></div><div class="kpi"><b>'+ds.length+'</b><span>documents available</span></div><div class="kpi"><b>'+n+'</b><span>unread alert'+(n>1?'s':'')+'</span></div></div>'+
+      (n?'<div class="panel"><h2>New alerts<button class="dl" data-go="notifs">View all</button></h2>'+NOT[me.id].filter(function(x){return !x.read}).slice(0,3).map(function(x){return '<div class="item new"><div><b>'+esc(x.txt)+'</b><small>Just now</small></div></div>'}).join('')+'</div>':'')+
+      '<div class="panel"><h2>Upcoming appointments<button class="dl" data-go="agenda">Calendar</button></h2>'+(evs.length?evs.map(function(e){return '<div class="item"><div><b>'+esc(e.t)+'</b><small>'+fmtL(parse(e.d))+' · '+e.s+' – '+e.e+(e.lieu?' · '+esc(e.lieu):'')+'</small></div>'+(e.type==='direction'?'<span class="tag rh">Management</span>':'')+'</div>'}).join(''):'<div class="empty">No upcoming appointments.</div>')+'</div>';
+    }else if(view==='agenda'){
+      var we=new Date(wkStart);we.setDate(we.getDate()+6);
+      var days='';
+      for(var i=0;i<7;i++){var d=new Date(wkStart);d.setDate(d.getDate()+i);var key=iso(d);
+        var list=EV.filter(function(e){return e.d===key&&canSeeEv(e)}).sort(function(a,b){return a.s<b.s?-1:1});
+        days+='<div class="day'+(key===iso(today)?' tod':'')+'"><h3><span>'+JOURS[d.getDay()].slice(0,3)+'. <b>'+d.getDate()+'</b></span><button type="button" data-new="'+key+'" aria-label="Add an appointment on '+fmtL(d)+'">+</button></h3>'+list.map(function(e){return '<button class="ev '+e.type+'" data-ev="'+e.id+'">'+esc(e.t)+'<small>'+e.s+' – '+e.e+'</small></button>'}).join('')+'</div>'}
+      h=head('Team calendar','The appointments shown depend on your profile.','<button class="btn go" data-new="'+iso(today)+'">+ New appointment</button>')+
+      '<div class="wk"><button class="nav" data-wk="-1" aria-label="Previous week">‹</button><button class="nav" data-wk="1" aria-label="Next week">›</button><b>'+wkStart.getDate()+' '+MOIS[wkStart.getMonth()]+' – '+we.getDate()+' '+MOIS[we.getMonth()]+'</b><button class="btn alt sm" data-wk="0">Today</button></div><div class="week">'+days+'</div>'+
+      '<p class="note">Create an appointment, invite colleagues and send them an alert: it appears in their area.</p>';
+    }else if(view==='docs'){
+      var vis=DOCS.filter(canSeeDoc).filter(function(d){return tab==='mes'?d.by===me.id:tab==='avec'?d.by!==me.id:true}).sort(function(a,b){return a.id<b.id?1:-1});
+      h=head('Shared documents','You only see documents shared with you.','<button class="btn go" id="upl">+ Add a document</button>')+
+      '<div class="tabs"><button data-tab="tous" aria-pressed="'+(tab==='tous')+'">All</button><button data-tab="mes" aria-pressed="'+(tab==='mes')+'">My documents</button><button data-tab="avec" aria-pressed="'+(tab==='avec')+'">Shared with me</button></div>'+
+      '<div class="panel">'+(vis.length?vis.map(function(d){var ext=(d.n.split('.').pop()||'').toLowerCase();var mine=d.by===me.id||me.lvl===3;return '<div class="item"><div class="row2"><span class="fic '+ext+'">'+esc(ext.slice(0,4))+'</span><div><b>'+esc(d.n)+'</b><small>Added by  '+U(d.by).pre+' · '+fmtL(parse(d.date))+' · '+d.size+'</small><div class="chips"><span class="chip" style="background:#E4EAF6">'+esc(d.cat)+'</span>'+shareLabel(d).map(function(x){return '<span class="chip">'+esc(x)+'</span>'}).join('')+'</div></div></div><div class="act"><button class="dl" data-dl="'+d.id+'">Download</button>'+(mine?'<button class="dl" data-share="'+d.id+'">Share</button><button class="dl red" data-del="'+d.id+'" aria-label="Delete">Delete</button>':'')+'</div></div>'}).join(''):'<div class="empty">No documents here yet.</div>')+'</div>';
+    }else if(view==='notifs'){
+      var L=NOT[me.id];
+      h=head('Alerts','Appointments and documents that concern you.',L.length?'<button class="btn alt" id="readall">Mark all as read</button>':'')+'<div class="panel">'+(L.length?L.map(function(x){return '<div class="item'+(x.read?'':' new')+'"><div><b>'+esc(x.txt)+'</b><small>'+(x.kind==='rdv'?'Calendar':'Documents')+' · '+pad(x.when.getHours())+'h'+pad(x.when.getMinutes())+'</small></div>'+(x.read?'':'<span class="tag ok">New</span>')+'</div>'}).join(''):'<div class="empty">No alerts yet. Ask a colleague to invite you to an appointment or share a document.</div>')+'</div>';
+    }else if(view==='admin'){
+      if(me.lvl<3){h=head('Administration','')+'<div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><div><h2>Access denied</h2><p>This section is for partners only. Sign in as “Claire Veyrac” to see it.</p></div></div>'}
+      else{h=head('Administration','Manage your team’s access.','<button class="btn go" id="inv">+ Invite a colleague</button>')+'<div class="panel"><table><thead><tr><th>Name</th><th>Role</th><th>Access</th></tr></thead><tbody>'+USERS.map(function(u){return '<tr><td><b>'+u.nom+'</b></td><td>'+u.role+'</td><td>'+u.desc+'</td></tr>'}).join('')+'</tbody></table></div><p class="note">In your area, you create, change or remove access in a few clicks.</p>'}
+    }
+    $('mn').innerHTML=h;bind();
+  }
+
+  function bind(){
+    var q=function(s,f){[].forEach.call($('mn').querySelectorAll(s),f)};
+    q('[data-go]',function(b){b.onclick=function(){view=b.dataset.go;nav()}});
+    q('[data-wk]',function(b){b.onclick=function(){var k=+b.dataset.wk;if(k===0)wkStart=mondayOf(today);else wkStart.setDate(wkStart.getDate()+7*k);nav()}});
+    q('[data-new]',function(b){b.onclick=function(){evForm(b.dataset.new)}});
+    q('[data-ev]',function(b){b.onclick=function(){evView(+b.dataset.ev)}});
+    q('[data-tab]',function(b){b.onclick=function(){tab=b.dataset.tab;nav()}});
+    q('[data-dl]',function(b){b.onclick=function(){dl(+b.dataset.dl)}});
+    q('[data-share]',function(b){b.onclick=function(){shareForm(+b.dataset.share)}});
+    q('[data-del]',function(b){b.onclick=function(){var d=DOCS.filter(function(x){return x.id===+b.dataset.del})[0];DOCS.splice(DOCS.indexOf(d),1);toast('Document deleted',d.n);nav()}});
+    var u=$('upl');if(u)u.onclick=upForm;
+    var r=$('readall');if(r)r.onclick=function(){NOT[me.id].forEach(function(x){x.read=true});nav()};
+    var v=$('inv');if(v)v.onclick=function(){toast('Demo: here you would enter your colleague’s name and email.','They receive an invitation and choose a password.')};
+    if(view==='notifs'){NOT[me.id].forEach(function(x){x.readLater=true});setTimeout(function(){if(view==='notifs'&&me){var c=$('cnt');c.classList.add('hide')}},0)}
+  }
+  var files={};
+  function dl(id){var d=DOCS.filter(function(x){return x.id===id})[0];if(files[id]){var a=document.createElement('a');a.href=URL.createObjectURL(files[id]);a.download=d.n;document.body.appendChild(a);a.click();a.remove()}else toast('Demo: the document would download here.',d.n)}
+
+  /* partage : liste de personnes */
+  function whoBoxes(sel,name){return USERS.filter(function(u){return u.id!==me.id}).map(function(u){return '<label><input type="checkbox" name="'+name+'" value="'+u.id+'"'+(sel.indexOf(u.id)>-1?' checked':'')+'> '+u.nom+'<span style="color:var(--doux);font-weight:500;font-size:.8rem"> · '+u.role+'</span></label>'}).join('')}
+  function picked(name){return [].map.call($('layer').querySelectorAll('input[name='+name+']:checked'),function(i){return i.value})}
+
+  /* nouveau document */
+  function upForm(){
+    modal('<h2>Add a document</h2><p class="sub">Choose the file, then who to share it with.</p>'+
+    '<label>File</label><div class="drop" id="drop"><b>Click to choose a file</b><br><span id="fn">PDF, Word, Excel… (in this demo it stays on your computer)</span><input type="file" id="fi" class="hide"></div>'+
+    '<div class="two"><div><label for="dn">Document name</label><input id="dn" placeholder="E.g. Garnier client contract"></div><div><label for="dc">Category</label><select id="dc"><option>Firm</option><option>Clients</option><option>Templates</option><option>Management</option></select></div></div>'+
+    '<label>Share with</label><div class="radio"><label><input type="radio" name="sc" value="moi" checked> Only me (draft)</label><label><input type="radio" name="sc" value="all"> Whole team</label><label><input type="radio" name="sc" value="some"> Specific people</label></div>'+
+    '<div class="who hide" id="wh">'+whoBoxes([],'wd')+'</div>'+
+    '<label class="opt"><input type="checkbox" id="dal" checked><span>Alert the recipients<small>They get a message in their area and by email.</small></span></label>'+
+    '<div class="btns"><button class="btn alt" id="cx">Cancel</button><button class="btn go" id="ok">Add document</button></div>');
+    var f=null;$('drop').onclick=function(){$('fi').click()};
+    $('fi').onchange=function(){f=this.files[0];if(f){$('fn').textContent=f.name+' · '+(f.size>1048576?(f.size/1048576).toFixed(1)+' MB':Math.max(1,Math.round(f.size/1024))+' KB');$('drop').classList.add('on');if(!$('dn').value)$('dn').value=f.name.replace(/\.[^.]+$/,'')}};
+    [].forEach.call($('layer').querySelectorAll('input[name=sc]'),function(r){r.onchange=function(){$('wh').classList.toggle('hide',r.value!=='some'||!r.checked)}});
+    $('cx').onclick=closeM;
+    $('ok').onclick=function(){
+      var name=$('dn').value.trim();if(!f&&!name){$('dn').setAttribute('aria-invalid','true');$('dn').focus();return}
+      var ext=f?(f.name.split('.').pop()):'pdf',nm=(name||f.name.replace(/\.[^.]+$/,''))+'.'+ext;
+      var m=$('layer').querySelector('input[name=sc]:checked').value;var sh=m==='all'?'all':m==='moi'?[me.id]:[me.id].concat(picked('wd'));
+      if(m==='some'&&sh.length===1){toast('Choose at least one person.');return}
+      var d={id:++seq,n:nm,cat:$('dc').value,by:me.id,sh:sh,date:iso(today),size:f?(f.size>1048576?(f.size/1048576).toFixed(1)+' MB':Math.max(1,Math.round(f.size/1024))+' KB'):'—'};
+      DOCS.push(d);if(f)files[d.id]=f;
+      var dest=sh==='all'?USERS.map(function(u){return u.id}):sh;
+      if($('dal').checked&&m!=='moi'){notify(dest,me.pre+' shared a document with you: '+nm,'doc');toast('Document added. Alert sent to '+(sh==='all'?'the whole team':picked('wd').map(function(i){return U(i).pre}).join(', ')),'A notification email was sent with the document link.')}
+      else toast('Document added',m==='moi'?'Visible to you only.':'Shared without an alert.');
+      closeM();tab='tous';nav();
+    };
+  }
+  /* modifier le partage */
+  function shareForm(id){
+    var d=DOCS.filter(function(x){return x.id===id})[0];var isAll=d.sh==='all';var cur=isAll?[]:d.sh;
+    modal('<h2>Share “'+esc(d.n)+'”</h2><p class="sub">Choose who can see this document.</p>'+
+    '<div class="radio"><label><input type="radio" name="sc" value="moi"'+(!isAll&&cur.length<=1?' checked':'')+'> Only me</label><label><input type="radio" name="sc" value="all"'+(isAll?' checked':'')+'> Whole team</label><label><input type="radio" name="sc" value="some"'+(!isAll&&cur.length>1?' checked':'')+'> Specific people</label></div>'+
+    '<div class="who'+((!isAll&&cur.length>1)?'':' hide')+'" id="wh">'+whoBoxes(cur,'wd')+'</div>'+
+    '<label class="opt"><input type="checkbox" id="dal" checked><span>Alert new recipients<small>Alert in their area and by email.</small></span></label>'+
+    '<div class="btns"><button class="btn alt" id="cx">Cancel</button><button class="btn go" id="ok">Save</button></div>');
+    [].forEach.call($('layer').querySelectorAll('input[name=sc]'),function(r){r.onchange=function(){$('wh').classList.toggle('hide',r.value!=='some'||!r.checked)}});
+    $('cx').onclick=closeM;
+    $('ok').onclick=function(){
+      var m=$('layer').querySelector('input[name=sc]:checked').value;var before=isAll?USERS.map(function(u){return u.id}):cur.slice();
+      var sh=m==='all'?'all':m==='moi'?[d.by]:[d.by].concat(picked('wd'));d.sh=sh;
+      var after=sh==='all'?USERS.map(function(u){return u.id}):sh;var neu=after.filter(function(i){return before.indexOf(i)<0&&i!==me.id});
+      if($('dal').checked&&neu.length){notify(neu,me.pre+' shared a document with you: '+d.n,'doc');toast('Sharing saved. Alert sent to '+neu.map(function(i){return U(i).pre}).join(', '))}else toast('Sharing saved');
+      closeM();nav();
+    };
+  }
+
+  /* nouveau rendez-vous */
+  function evForm(day){
+    modal('<h2>New appointment</h2><p class="sub">Add the details, invite colleagues and send an alert.</p>'+
+    '<label for="et">Title</label><input id="et" placeholder="E.g. Meeting with client Perrin">'+
+    '<div class="two"><div><label for="ety">Type</label><select id="ety"><option value="client">Client meeting</option><option value="reunion">Team meeting</option><option value="rappel">Deadline / reminder</option><option value="direction">Management (confidential)</option></select></div><div><label for="el">Location</label><input id="el" placeholder="Office 2, video call…"></div></div>'+
+    '<div class="three"><div><label for="ed">Date</label><input id="ed" type="date" value="'+day+'"></div><div><label for="es">Start</label><input id="es" type="time" value="09:00"></div><div><label for="ee">End</label><input id="ee" type="time" value="10:00"></div></div>'+
+    '<div class="two"><div><label for="er">Repeat</label><select id="er"><option value="0">Just once</option><option value="w">Every week (4 times)</option><option value="m">Every month (3 times)</option></select></div><div><label for="ep">Reminder</label><select id="ep"><option>None</option><option>15 minutes before</option><option selected>1 hour before</option><option>The day before</option></select></div></div>'+
+    '<label>Attendees</label><div class="who">'+whoBoxes([],'ea')+'</div>'+
+    '<label for="ex">Notes</label><textarea id="ex" placeholder="Agenda, documents to bring…"></textarea>'+
+    '<label class="opt"><input type="checkbox" id="eal" checked><span>Send attendees an alert<small>Notification in their area and an email invitation with date and time.</small></span></label>'+
+    '<div class="btns"><button class="btn alt" id="cx">Cancel</button><button class="btn go" id="ok">Create appointment</button></div>');
+    $('cx').onclick=closeM;
+    $('ok').onclick=function(){
+      var t=$('et').value.trim();if(!t){$('et').setAttribute('aria-invalid','true');$('et').focus();return}
+      if(!$('ed').value||$('ee').value<=$('es').value){toast('Check the date and times.');return}
+      var att=[me.id].concat(picked('ea')),rep=$('er').value,n=rep==='w'?4:rep==='m'?3:1,base=parse($('ed').value);
+      for(var i=0;i<n;i++){var d=new Date(base);if(rep==='w')d.setDate(d.getDate()+7*i);if(rep==='m')d.setMonth(d.getMonth()+i);EV.push({id:++seq,t:t,d:iso(d),s:$('es').value,e:$('ee').value,lieu:$('el').value.trim(),type:$('ety').value,att:att,by:me.id,desc:$('ex').value.trim(),rap:$('ep').value})}
+      var inv=att.filter(function(i){return i!==me.id});
+      var when=fmtL(base)+' at '+$('es').value;
+      if($('eal').checked&&inv.length){notify(inv,'New appointment: '+t+', '+when+(n>1?' (series of '+n+')':''),'rdv');
+        toast('Appointment created. Alert sent to '+inv.map(function(i){return U(i).pre}).join(', '),'Email invitation: “'+t+'”, '+when)}
+      else toast('Appointment created',inv.length?'Attendees added without an alert.':'Visible to you only.');
+      wkStart=mondayOf(base);closeM();view='agenda';nav();
+    };
+  }
+  function evView(id){
+    var e=EV.filter(function(x){return x.id===id})[0];if(!e)return;var canDel=me.lvl===3||e.by===me.id;
+    var lb={client:'Client meeting',reunion:'Team meeting',rappel:'Deadline / reminder',direction:'Management (confidential)'}[e.type];
+    modal('<h2>'+esc(e.t)+'</h2><p class="sub">'+lb+'</p>'+
+    '<div class="panel" style="margin:14px 0 0"><div class="item"><div><b>'+fmtL(parse(e.d))+'</b><small>'+e.s+' – '+e.e+(e.lieu?' · '+esc(e.lieu):'')+'</small></div></div><div class="item"><div><b>Attendees</b><div class="chips">'+e.att.map(function(i){return '<span class="chip">'+U(i).nom+'</span>'}).join('')+'</div></div></div>'+(e.rap?'<div class="item"><div><b>Reminder</b><small>'+esc(e.rap)+'</small></div></div>':'')+(e.desc?'<div class="item"><div><b>Notes</b><small>'+esc(e.desc)+'</small></div></div>':'')+'<div class="item"><div><b>Created by</b><small>'+U(e.by).nom+'</small></div></div></div>'+
+    '<div class="btns">'+(canDel?'<button class="btn alt" id="del" style="color:var(--alerte)">Delete</button>':'')+'<button class="btn alt" id="rem">Resend alert</button><button class="btn" id="cx">Close</button></div>');
+    $('cx').onclick=closeM;
+    $('rem').onclick=function(){var inv=e.att.filter(function(i){return i!==me.id});if(inv.length){notify(inv,'Reminder: '+e.t+', '+fmtL(parse(e.d))+' at '+e.s,'rdv');toast('Alert resent to '+inv.map(function(i){return U(i).pre}).join(', '))}else toast('No other attendees to alert.');closeM()};
+    var dl2=$('del');if(dl2)dl2.onclick=function(){var inv=e.att.filter(function(i){return i!==me.id});EV.splice(EV.indexOf(e),1);if(inv.length)notify(inv,'Appointment cancelled: '+e.t+', '+fmtL(parse(e.d)),'rdv');toast('Appointment deleted',inv.length?'Attendees have been notified.':'');closeM();nav()};
+  }
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM()});
+})();
+</script>
+</body>
+</html>
