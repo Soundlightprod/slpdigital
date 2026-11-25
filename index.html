@@ -482,6 +482,10 @@
 
   /* Modes de règlement : 24 mois (référence), 12 mois (+15 %), comptant (22 mois pour 24) */
   var PAY = '24';
+  /* Promo Vitrine : commandes jusqu'au 31/12/2026, prix valable sur les 12 premiers mois */
+  var PROMO = Date.now() < Date.parse('2027-01-01T00:00:00+01:00');
+  var PROMO_VITRINE = {'24': 4999, '12': 5750, 'cash': 119978};
+  var PROMO_CODES = {'24': 'VITRINE24', '12': 'VITRINE12', 'cash': 'VITRINECPT'};
   var NOTES = {
     '24': 'Tarif de référence : engagement de 24 mois, création du site sans frais d’entrée.',
     '12': 'Engagement plus court : mensualité un peu plus élevée, création du site sans frais d’entrée.',
@@ -504,10 +508,14 @@
     document.getElementById('fine').textContent = FINE[PAY] + ' Création d’identité visuelle (logo, charte graphique) et visuels sur mesure en option, sur devis.';
     document.querySelectorAll('.plan .price[data-base]').forEach(function(pr){
       var base = +pr.dataset.base, c = calc(base, PAY), box = pr.parentNode;
+      var promo = PROMO && base === 5999, normal = c;
+      if (promo) c = PROMO_VITRINE[PAY];
       pr.querySelector('.pv').textContent = eur(c);
       pr.querySelector('.pu').textContent = PAY === 'cash' ? 'TTC, une seule fois' : 'TTC / mois';
       box.querySelector('.ht').textContent = 'soit ' + eur(Math.round(c / 1.2)) + ' HT (TVA 20\u00a0%)' + (PAY === 'cash' ? ', pour 24 mois' : '');
-      box.querySelector('.eq').textContent = PAY === 'cash' ? 'soit ' + eur(Math.round(c / 24)) + ' par mois, au lieu de ' + eur(base) : '';
+      box.querySelector('.eq').textContent = promo
+        ? 'Promo jusqu’au 31/12/2026, au lieu de ' + eur(normal) + (PAY === '24' ? ' : 12 premiers mois, puis ' + eur(normal) + ' par mois' : PAY === '12' ? ' : pendant 12 mois, puis ' + eur(normal) + ' à la reconduction' : '')
+        : PAY === 'cash' ? 'soit ' + eur(Math.round(c / 24)) + ' par mois, au lieu de ' + eur(base) : '';
     });
     updateOrder();
   }
@@ -528,6 +536,7 @@
     var box = document.getElementById('payNext'); box.innerHTML = '';
     var url = PAIEMENT_EN_LIGNE && PAYLINKS[sj] && PAYLINKS[sj][md];
     if (!url) { box.classList.remove('show'); return; }
+    if (PROMO && sj === 'Vitrine') url += '?prefilled_promo_code=' + PROMO_CODES[md];
     var p = document.createElement('p'); p.textContent = 'Pour valider votre abonnement, réglez en ligne en toute sécurité. L’engagement démarre à cette validation.';
     var a = document.createElement('a'); a.className = 'btn btn-go'; a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Valider mon abonnement et payer';
     box.appendChild(p); box.appendChild(a); box.classList.add('show');
@@ -540,6 +549,10 @@
     var sj = document.getElementById('sujet').value, md = document.getElementById('mode').value;
     if (!(sj in PRICED) || !md) return '';
     var c = calc(PRICED[sj], md);
+    if (PROMO && sj === 'Vitrine') {
+      var apres = md === '24' ? ' pendant 12 mois, puis <b>' + eur(5999) + ' TTC par mois</b> les 12 mois suivants' : md === '12' ? ' pendant 12 mois, puis ' + eur(6900) + ' TTC par mois en cas de reconduction' : '';
+      return '<b>Vitrine</b> (promo), règlement ' + MODE_TXT[md] + ' : <b>' + eur(PROMO_VITRINE[md]) + ' TTC' + (md === 'cash' ? '</b> en une seule fois' : ' par mois</b>' + apres) + '.';
+    }
     var montant = md === 'cash' ? '<b>' + eur(c) + ' TTC</b> en une seule fois' : '<b>' + eur(c) + ' TTC par mois</b> pendant ' + md + ' mois';
     return '<b>' + sj + '</b>, règlement ' + MODE_TXT[md] + ' : ' + montant + '.';
   }
